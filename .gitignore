@@ -1,1 +1,9 @@
+<<<<<<< Updated upstream
 /target/
+=======
+.project
+.classpath
+.settings/
+build/
+target/
+>>>>>>> Stashed changes
