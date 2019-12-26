@@ -1,14 +1,49 @@
 package fr.formation.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@Entity 
+@Table(name = "carte")
 public class Carte {
 	//Créer une carte 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID_CARTE")
 	private int id;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_MOT_CARTE")
 	private Mot monMot = new Mot();
-	//private Type type = null;
+	
+	@Column(name="COULEUR_CARTE",length = 100, nullable = false)
+	@NotEmpty
+	@Size(max = 50)
 	private String couleur;
+	
+	@Column(name = "POSITION_X_CARTE", nullable = false)
+	@NotEmpty
 	private int pos_x;
+	
+	@Column(name = "POSITION_Y_CARTE", nullable = false)
+	@NotEmpty
 	private int pos_y;
+	
+	@Column(name = "DECOUVERT")
 	private boolean decouvert;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_GRILLE_CARTE")
+	private Grille grille;
 	
 //	public void setupMot() {
 //		this.monMot.setIdRandom();
@@ -16,6 +51,12 @@ public class Carte {
 //		this.monMot = findById(this.monMot.getId());
 //	}
 	
+	public Grille getGrille() {
+		return grille;
+	}
+	public void setGrille(Grille grille) {
+		this.grille = grille;
+	}
 	public int getId() {
 		return id;
 	}

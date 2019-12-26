@@ -1,9 +1,31 @@
 package fr.formation.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+@Entity 
+@Table(name = "mot")
 public class Mot {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID_MOT")
 	private int id;
+	
+	@Column(name="LIBELLE_MOT",length = 100, nullable = false)
+	@NotEmpty
+	@Size(max = 50)
 	private String mot;
-	// private DAOConnectionSQL myConnection = new DAOConnectionSQL();
+	
+	@OneToOne(mappedBy = "monMot")
+	private Carte carte;
 
 	public int getId() {
 		return id;

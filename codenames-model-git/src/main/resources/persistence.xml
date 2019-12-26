@@ -5,6 +5,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 <persistence-unit name="NomPersistenceUnit" transaction-type="RESOURCE_LOCAL">
 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+<class>fr.formation.model.Personne</class>
+<class>fr.formation.model.Joueur</class>
+<class>fr.formation.model.Mot</class>
+<class>fr.formation.model.Carte</class>
+<class>fr.formation.model.Grille</class>
+
 <properties>
 
 	<property name="hibernate.connection.url" value="jdbc:mysql://172.16.44.104:3306/codenames?serverTimezone=UTC" />

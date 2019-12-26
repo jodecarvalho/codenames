@@ -1,9 +1,25 @@
 package fr.formation.model;
+import java.util.List;
 
-import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity 
+@Table(name = "mot")
 public class Grille {
-	private ArrayList<Carte> mesCartes = new ArrayList<Carte>();
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID_GRILLE")
+	private int id;
+
+	@OneToMany(mappedBy = "grille")
+	private List<Carte> mesCartes = null;
 	// private Carte maGrille[][] = new Carte[5][5];
 	// private Carte maCarte = null;
 
@@ -16,11 +32,18 @@ public class Grille {
 	 * } this.mesCartes = mesCartes; }
 	 */
 
-	public ArrayList<Carte> getMesCartes() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	public List<Carte> getMesCartes() {
 		return mesCartes;
 	}
 	
-	public void setMesCartes(ArrayList<Carte> mesCartes) {
+	public void setMesCartes(List<Carte> mesCartes) {
 		this.mesCartes = mesCartes;
 	}
 
