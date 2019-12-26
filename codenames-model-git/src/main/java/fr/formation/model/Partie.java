@@ -6,6 +6,7 @@ public class Partie {
 	private int id;
 	private Grille maGrille = new Grille();
 	private ArrayList<Joueur> mesJoueurs = new ArrayList<Joueur>();
+	
 	public int getId() {
 		return id;
 	}

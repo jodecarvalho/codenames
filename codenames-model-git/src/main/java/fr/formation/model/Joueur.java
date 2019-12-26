@@ -3,6 +3,7 @@ package fr.formation.model;
 public class Joueur extends Personne {
 	//Créé un joueur à partir d'une personne
 	//
+	private int id;
 	private Type couleur;
 	private Role role;
 	
