@@ -6,11 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name = "mot")
+@Table(name = "grille")
 public class Grille {
 	
 	@Id
@@ -20,6 +22,10 @@ public class Grille {
 
 	@OneToMany(mappedBy = "grille")
 	private List<Carte> mesCartes = null;
+	
+	@OneToOne
+	@JoinColumn(name = "ID_PARTIE_GRILLE")
+	private Partie partie;
 	// private Carte maGrille[][] = new Carte[5][5];
 	// private Carte maCarte = null;
 
@@ -34,6 +40,14 @@ public class Grille {
 
 	public int getId() {
 		return id;
+	}
+
+	public Partie getPartie() {
+		return partie;
+	}
+
+	public void setPartie(Partie partie) {
+		this.partie = partie;
 	}
 
 	public void setId(int id) {

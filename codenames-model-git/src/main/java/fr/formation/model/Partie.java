@@ -1,13 +1,12 @@
 package fr.formation.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,11 +20,11 @@ public class Partie {
 	@Column(name = "ID_PARTIE")
 	private int id;
 	
-	@OneToOne
+	@OneToOne(mappedBy = "partie")
 	private Grille maGrille = new Grille();
 	
 	@OneToMany(mappedBy = "partie")
-	private ArrayList<Joueur> mesJoueurs = new ArrayList<Joueur>();
+	private List<Joueur> mesJoueurs = null;
 	
 	public int getId() {
 		return id;
@@ -39,10 +38,10 @@ public class Partie {
 	public void setMaGrille(Grille maGrille) {
 		this.maGrille = maGrille;
 	}
-	public ArrayList<Joueur> getMesJoueurs() {
+	public List<Joueur> getMesJoueurs() {
 		return mesJoueurs;
 	}
-	public void setMesJoueurs(ArrayList<Joueur> mesJoueurs) {
+	public void setMesJoueurs(List<Joueur> mesJoueurs) {
 		this.mesJoueurs = mesJoueurs;
 	}
 }

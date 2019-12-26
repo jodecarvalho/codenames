@@ -37,6 +37,16 @@ public class Personne{
 	public Personne() {};
 	
 	
+	public List<Joueur> getJoueurs() {
+		return joueurs;
+	}
+
+
+	public void setJoueurs(List<Joueur> joueurs) {
+		this.joueurs = joueurs;
+	}
+
+
 	public int getId() {
 		return id;
 	}

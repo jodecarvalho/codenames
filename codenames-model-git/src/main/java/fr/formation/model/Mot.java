@@ -47,6 +47,14 @@ public class Mot {
 		this.id = (int) (Math.random() * 698);
 	}
 
+	public Carte getCarte() {
+		return carte;
+	}
+
+	public void setCarte(Carte carte) {
+		this.carte = carte;
+	}
+
 //	public int getId() {
 //		return id;
 //	}
@@ -96,4 +104,6 @@ public class Mot {
 //			System.out.println("Erreur dans l'attribution du mot");
 //		}
 //	}
+	
+	
 }

@@ -34,6 +34,10 @@ public class Joueur {
 	@JoinColumn(name = "ID_PERSONNE_JOUEUR")
 	private Personne personne;
 	
+	@ManyToOne
+	@JoinColumn(name = "ID_PARTIE_JOUEUR")
+	private Partie partie;
+	
 	public int getId() {
 		return id;
 	}
@@ -56,8 +60,17 @@ public class Joueur {
 	public Personne getPersonne() {
 		return personne;
 	}
+	
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
 	}
+	
+	public Partie getPartie() {
+		return partie;
+	}
+	public void setPartie(Partie partie) {
+		this.partie = partie;
+	}
+	
 	
 }
