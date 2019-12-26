@@ -7,7 +7,6 @@ public class Carte {
 	//private Type type = null;
 	private String couleur;
 	private int pos_x;
-
 	private int pos_y;
 	private boolean decouvert;
 	
