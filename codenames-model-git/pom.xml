@@ -10,25 +10,6 @@
   </properties>
   
   <dependencies>
-  	<dependency>
-<<<<<<< Updated upstream
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-entitymanager</artifactId>
-    	<version>5.3.3.Final</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate.validator</groupId>
-	    <artifactId>hibernate-validator</artifactId>
-	    <version>6.1.0.Final</version>
-	</dependency>
-  </dependencies>
-    
-=======
-  		<groupId>mysql</groupId>
-  		<artifactId>mysql-connector-java</artifactId>
-  		<version>8.0.18</version>
-  		<scope>runtime</scope>
-  	</dependency>
   	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 	<dependency>
    		 <groupId>org.hibernate</groupId>
@@ -42,7 +23,4 @@
     	<version>6.0.11.Final</version>
 	</dependency>  	
   </dependencies>
-  
-  
->>>>>>> Stashed changes
 </project>
