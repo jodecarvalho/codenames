@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "partie")
@@ -26,6 +28,17 @@ public class Partie {
 	@OneToMany(mappedBy = "partie")
 	private List<Joueur> mesJoueurs = null;
 	
+	@Column(name="ETAT_PARTIE",length = 100, nullable = false)
+	@NotEmpty
+	@Size(max = 100)
+	private String etat; //3 états possibles: en cours(en cours de jeu), création(en cours de création, en attente de joueurs, terminée)
+	
+	public String getEtat() {
+		return etat;
+	}
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
 	public int getId() {
 		return id;
 	}
