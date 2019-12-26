@@ -3,8 +3,8 @@ package fr.formation;
 import java.util.InputMismatchException;
 
 import DAO.DAOPersonneSQL;
-import fr.formation.codenames.Personne;
 import fr.formation.exception.LireChiffreFormatException;
+import fr.formation.model.Personne;
 
 public class Menu {
 

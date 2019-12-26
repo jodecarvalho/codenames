@@ -1,54 +1,27 @@
-package fr.formation.model;
+package fr.formation.dao.sql;
 
-public class Mot {
-	private int id;
-	private String mot;
-	// private DAOConnectionSQL myConnection = new DAOConnectionSQL();
+import java.util.List;
 
-	public int getId() {
-		return id;
+import fr.formation.dao.IDAO;
+import fr.formation.model.Grille;
+
+public class DAOGrilleSQL extends DAOConnectionSQL implements IDAO <Grille, Integer>{
+	
+	@Override
+	public List<Grille> findAll() {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getMot() {
-		return mot;
-	}
-
-	public void setMot(String mot) {
-		this.mot = mot;
-	}
-
-	public void setIdRandom() {
-		this.id = (int) (Math.random() * 698);
-	}
-
-//	public int getId() {
-//		return id;
-//	}
-//	
-//	public void setId() {
-//		/*int n[] = new int[25];
-//		for(int i = 0 ; i<25; i++) {
-//			n[i] = (int)(Math.random() * 5);
-//			
-//		}*/
-//		this.id = (int)(Math.random() * 698);
-//	}
-//	
-//	
-//	public String getMot() {
-//		return mot;
-//	}	
-//		
-//	
-//	/*public void setMot(int id) {
+	@Override
+	public Grille findById(Integer id) {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
 //		ResultSet myResult = null;
 //		PreparedStatement myStatement = null;
 //		//DAOConnectionSQL connection = new DAOConnectionSQL();
-//			
+//		Mot monMot = new Mot();
 //		try {
 //			System.out.println("Set Mot");
 //			if (myConnection != null) {
@@ -60,7 +33,7 @@ public class Mot {
 //				
 //				while(myResult.next()) {
 //					System.out.println("Set Mot getString");
-//					 this.mot = myResult.getString("mot");
+//					 monMot.setMot(myResult.getString("mot"));
 //					//Produit pro = em.getProduit(myResult);
 //					
 //				}
@@ -73,5 +46,28 @@ public class Mot {
 //			e.printStackTrace();
 //			System.out.println("Erreur dans l'attribution du mot");
 //		}
-//	}
+//		
+//		return monMot;
+		
+		return null;
+	}
+
+	@Override
+	public Grille save(Grille entity) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Grille entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

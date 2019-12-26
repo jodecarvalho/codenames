@@ -2,9 +2,8 @@ package fr.formation;
 
 import java.util.Scanner;
 
-import fr.formation.codenames.EntityManager;
-import fr.formation.codenames.Personne;
 import fr.formation.exception.LireChiffreFormatException;
+import fr.formation.model.Personne;
 
 public class Application {
 	

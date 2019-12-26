@@ -2,14 +2,32 @@ package fr.formation.model;
 
 public class Carte {
 	//Créer une carte 
-	private Mot monMot;
-	private Type type;
+	private int id;
+	private Mot monMot = new Mot();
+	//private Type type = null;
+	private String couleur;
 	private int pos_x;
+
 	private int pos_y;
 	private boolean decouvert;
 	
-	public void setupCarte() {
-		this.monMot.setMot(this.monMot.getId());
+//	public void setupMot() {
+//		this.monMot.setIdRandom();
+//		//this.monMot.setMot(this.monMot.getId());
+//		this.monMot = findById(this.monMot.getId());
+//	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getCouleur() {
+		return couleur;
+	}
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 	
 	public Mot getMonMot() {
@@ -18,12 +36,12 @@ public class Carte {
 	public void setMonMot(Mot monMot) {
 		this.monMot = monMot;
 	}
-	public Type getType() {
-		return type;
-	}
-	public void setType(Type type) {
-		this.type = type;
-	}
+//	public Type getType() {
+//		return type;
+//	}
+//	public void setType(Type type) {
+//		this.type = type;
+//	}
 	public boolean isDecouvert() {
 		return decouvert;
 	}
