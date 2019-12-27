@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity 
 @Table(name = "grille")
 public class Grille {
@@ -61,40 +62,41 @@ public class Grille {
 		this.mesCartes = mesCartes;
 	}
 
-	public void setMesCartes() {
-		// Carte maCarte = new Carte();
-		/*
-		 * for(int i = 0 ; i<5 ; i++) { for(int j = 0 ; j<5 ; j++) {
-		 * this.maGrillesetupMot(); } }
-		 */
-
-//		for (int i = 0; i < 25; i++) {
-//			Carte maCarte = new Carte();
-//			maCarte.setupMot();
-//			
-//			//Vérifie si la carte existe déjà
-//			boolean b = true;
-//			while(b) {
-//				b=false;
-//				for(int j = 0 ; j<mesCartes.size() ; j++) {
-//					String motGrille = mesCartes.get(j).getMonMot().getMot();
-//					String newMot = maCarte.getMonMot().getMot();
-//					if(motGrille.equals(newMot)) {
-//						maCarte.setupMot();
-//						b=true;
-//					}				
-//				}
-//			}
-//			
-//			mesCartes.add(maCarte);
-//			
-//		}
-
-		
-
-		/*for (int i = 0; i < 25; i++) {
+//	public void setupCartes() {
+//
+//		// Carte maCarte = new Carte();
+//		/*
+//		 * for(int i = 0 ; i<5 ; i++) { for(int j = 0 ; j<5 ; j++) {
+//		 * this.maGrillesetupMot(); } }
+//		 */
+//
+////		for (int i = 0; i < 25; i++) {
+////			Carte maCarte = new Carte();
+////			maCarte.setupMot();
+////			
+////			//Vérifie si la carte existe déjà
+////			boolean b = true;
+////			while(b) {
+////				b=false;
+////				for(int j = 0 ; j<mesCartes.size() ; j++) {
+////					String motGrille = mesCartes.get(j).getMonMot().getMot();
+////					String newMot = maCarte.getMonMot().getMot();
+////					if(motGrille.equals(newMot)) {
+////						maCarte.setupMot();
+////						b=true;
+////					}				
+////				}
+////			}
+////			
+////			mesCartes.add(maCarte);
+////			
+////		}
+//
+//		
+//
+		for (int i = 0; i < 25; i++) {
 			Carte maCarte = new Carte();
-			DAOMotSQL motSQL = new DAOMotSQL();
+			DAOMotHibernate motSQL = new DAOMotSQL();
 			maCarte.getMonMot().setIdRandom();
 			maCarte.setMonMot(motSQL.findById(maCarte.getMonMot().getId())) ;
 
@@ -117,9 +119,9 @@ public class Grille {
 
 			mesCartes.add(maCarte);
 
-		}*/
-
-	}
+		}
+//
+//	}
 
 	
 
