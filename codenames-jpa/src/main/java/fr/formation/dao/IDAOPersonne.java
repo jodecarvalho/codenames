@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface IDAOPersonne extends IDAO<Personne, Integer>{
 	public Personne inscription(String pseudo, String password) throws UsernameAlreadyExists;
-	public Personne connexion();
+	public Personne connexion(String pseudo, String password) throws WrongPassword, WrongPseudo;
 }
