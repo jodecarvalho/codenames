@@ -5,10 +5,11 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 
 import fr.formation.dao.IDAO;
+import fr.formation.dao.IDAOJoueur;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.model.Joueur;
 
-public class DAOJoueurHibernate extends DAOConnectionHibernate implements IDAO<Joueur, Integer>{
+public class DAOJoueurHibernate extends DAOConnectionHibernate implements IDAOJoueur{
 
 	@Override
 	public List<Joueur> findAll() {
@@ -71,6 +72,13 @@ public class DAOJoueurHibernate extends DAOConnectionHibernate implements IDAO<J
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
+	}
+
+	@Override
+	public List<Joueur> findJoueursPartie(int id) {
+		// TODO Auto-generated method stub
+
+		return null;
 	}
 
 }

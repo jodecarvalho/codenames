@@ -1,5 +1,7 @@
 package fr.formation;
 
+import java.util.List;
+
 import java.util.Scanner;
 
 import javax.persistence.EntityManagerFactory;
@@ -10,6 +12,7 @@ import fr.formation.dao.IDAO;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.model.Grille;
+import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 import fr.formation.utile.CreationPartie;
 =======
@@ -37,6 +40,7 @@ public class Application {
 			System.out.print(c.getMonMot().getMot());System.out.print(c.getPos_x());System.out.print(c.getPos_y());
 			System.out.print(c.getCouleur());System.out.println(c.isDecouvert());
 		});
+		
 		
 		
 		DAOConnectionHibernate.close();

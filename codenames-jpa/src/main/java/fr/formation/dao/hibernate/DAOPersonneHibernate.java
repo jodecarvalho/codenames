@@ -11,7 +11,10 @@ import javax.persistence.TypedQuery;
 
 import fr.formation.dao.IDAO;
 import fr.formation.dao.IDAOPersonne;
+<<<<<<< Updated upstream
 import fr.formation.dao.exception.UsernameAlreadyExists;
+=======
+>>>>>>> Stashed changes
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 import fr.formation.model.Personne;
@@ -80,6 +83,7 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 		}
 	}
 
+<<<<<<< Updated upstream
 	public Personne inscription(String pseudo, String password) throws UsernameAlreadyExists {
 		Personne personne = new Personne();
 		TypedQuery<Personne> myQuery = em.createQuery("select p from Personne p where p.pseudo = :lepseudo",Personne.class);
@@ -111,6 +115,15 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	public Personne connexion() {
 		// TODO Auto-generated method stub
 		return null;
+=======
+	@Override
+	public List<Personne> findPartie(int id) {
+		// TODO Auto-generated method stub
+		return em
+				.createQuery("select p from Personne p inner join p.joueurs j where j.partie.id = :idPartie", Personne.class)
+				.setParameter("idPartie", id)
+				.getResultList();
+>>>>>>> Stashed changes
 	}
 
 }

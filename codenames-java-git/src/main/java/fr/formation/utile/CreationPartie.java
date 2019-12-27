@@ -28,6 +28,9 @@ public class CreationPartie {
 	public void setMesCartes(List<Carte> mesCartes) {
 		this.mesCartes = mesCartes;
 	}
+	
+	//========================================================================//
+	//Création grille
 
 	public void setupGrille() {
 		this.setupListMot();
@@ -129,6 +132,10 @@ public class CreationPartie {
 		}
 	}
 	
-	
+	//========================================================================//
+	//Distribution role
+	public void setDistributionJoueur() {
+		
+	}
 	
 }

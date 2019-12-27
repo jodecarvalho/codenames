@@ -5,11 +5,12 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 
 import fr.formation.dao.IDAO;
+import fr.formation.dao.IDAOPartie;
 import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 
-public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAO <Partie, Integer>{
+public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAOPartie{
 
 	@Override
 	public List<Partie> findAll() {
