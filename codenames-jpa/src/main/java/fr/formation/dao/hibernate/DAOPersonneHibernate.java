@@ -1,22 +1,18 @@
 package fr.formation.dao.hibernate;
 
-import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.Query;
+
 import javax.persistence.TypedQuery;
 
-import fr.formation.dao.IDAO;
+
 import fr.formation.dao.IDAOPersonne;
 <<<<<<< Updated upstream
 import fr.formation.dao.exception.UsernameAlreadyExists;
-=======
->>>>>>> Stashed changes
 import fr.formation.model.Joueur;
-import fr.formation.model.Partie;
+
 import fr.formation.model.Personne;
 
 public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAOPersonne {
@@ -115,15 +111,6 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	public Personne connexion() {
 		// TODO Auto-generated method stub
 		return null;
-=======
-	@Override
-	public List<Personne> findPartie(int id) {
-		// TODO Auto-generated method stub
-		return em
-				.createQuery("select p from Personne p inner join p.joueurs j where j.partie.id = :idPartie", Personne.class)
-				.setParameter("idPartie", id)
-				.getResultList();
->>>>>>> Stashed changes
 	}
 
 }

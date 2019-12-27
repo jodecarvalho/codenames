@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-<<<<<<< Updated upstream
+
 import fr.formation.dao.IDAO;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.dao.hibernate.DAOPersonneHibernate;
@@ -15,21 +15,28 @@ import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 import fr.formation.utile.CreationPartie;
-=======
+
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 import fr.formation.utile.Menu;
->>>>>>> Stashed changes
 
 public class Application {
 	
 	public static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-<<<<<<< Updated upstream
-		IDAO personneHibernate = new DAOPersonneHibernate();
-		Personne personne = new Personne();
-		
+		boolean chiffre = false;
+		Menu menu = new Menu();
+		Personne connexionPersonne = new Personne();
+		while(chiffre == false) {
+			try {
+				connexionPersonne = menu.gameConnection();
+				chiffre = true;
+			} catch (LireChiffreFormatException e) {
+				System.out.println("Veuillez saisir un chiffre");
+				System.out.println("");
+			}
+		}
 		Grille grille = new Grille();
 		CreationPartie partie = new CreationPartie();
 		
@@ -44,20 +51,8 @@ public class Application {
 		
 		
 		DAOConnectionHibernate.close();
-=======
-		boolean chiffre = false;
-		Menu menu = new Menu();
-		Personne personne = new Personne();
-		while(chiffre == false) {
-			try {
-				personne = menu.gameConnection();
-				chiffre = true;
-			} catch (LireChiffreFormatException e) {
-				System.out.println("Veuillez saisir un chiffre");
-				System.out.println("");
-			}
-		}
->>>>>>> Stashed changes
+
+
 	}
 
 }

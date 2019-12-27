@@ -5,6 +5,8 @@ import java.util.InputMismatchException;
 import fr.formation.Application;
 import fr.formation.dao.IDAOPersonne;
 import fr.formation.dao.exception.UsernameAlreadyExists;
+import fr.formation.dao.exception.WrongPassword;
+import fr.formation.dao.exception.WrongPseudo;
 import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
@@ -23,8 +25,8 @@ public class Menu {
 			try {
 				int a = Application.sc.nextInt();
 				if (a == 1) {
-//					personne = menu.reconnexionPersonne();
-//					bonChiffre = true;
+				personne = this.reconnexionPersonne(personne);
+				bonChiffre = true;
 				} 
 				else {
 					if (a == 2) {
@@ -60,6 +62,31 @@ public class Menu {
 				pseudoLibre = true;
 			} catch (UsernameAlreadyExists e) {
 				System.out.println("Ce pseudo est déjà pris");
+				System.out.println("");
+			}
+		}
+		return personne;
+	}
+	
+	private Personne reconnexionPersonne(Personne personne) {
+		IDAOPersonne menu = new DAOPersonneHibernate();
+		boolean personneExist = false;
+		while(personneExist == false) {
+			System.out.println("Veuillez saisir votre pseudo.");
+			String pseudo = Application.sc.next();
+			System.out.println("Veuillez saisir votre mot de passe");
+			String password = Application.sc.next();
+			try {
+				personne = menu.connexion(pseudo, password);
+				personneExist = true;
+			}
+			catch(WrongPseudo e) {
+				System.out.println("Ce pseudo n'existe pas, veuillez réessayer.");
+				System.out.println("");
+			}
+			catch(WrongPassword e) {
+				System.out.println("Mauvais mot de passe, veuillez réessayer.");
+				System.out.println("");
 			}
 		}
 		return personne;

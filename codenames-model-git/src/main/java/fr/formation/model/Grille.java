@@ -60,7 +60,7 @@ public class Grille {
 	
 	public void setMesCartes(List<Carte> mesCartes) {
 		this.mesCartes = mesCartes;
-	
+	}
 
 //	public void setupCartes() {
 //
@@ -118,13 +118,9 @@ public class Grille {
 //			
 //
 //			mesCartes.add(maCarte);
-<<<<<<< Updated upstream
 //
 //		}
-=======
 
-		}
->>>>>>> Stashed changes
 //
 //	}
 
