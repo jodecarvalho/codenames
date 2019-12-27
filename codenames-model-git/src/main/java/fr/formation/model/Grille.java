@@ -74,7 +74,7 @@ public class Grille {
 ////			Carte maCarte = new Carte();
 ////			maCarte.setupMot();
 ////			
-////			//Vérifie si la carte existe déjà
+////			//Vï¿½rifie si la carte existe dï¿½jï¿½
 ////			boolean b = true;
 ////			while(b) {
 ////				b=false;
@@ -100,7 +100,7 @@ public class Grille {
 //			maCarte.getMonMot().setIdRandom();
 //			maCarte.setMonMot(motSQL.findById(maCarte.getMonMot().getId())) ;
 //
-//			// Vérifie si la carte existe déjà
+//			// Vï¿½rifie si la carte existe dï¿½jï¿½
 //			boolean b = true;
 //			while (b) {
 //				b = false;
@@ -126,7 +126,7 @@ public class Grille {
 
 	
 
-	// Il faut donner une position à chaque mot
+	// Il faut donner une position ï¿½ chaque mot
 	/*
 	 * public void position(ArrayList<Carte> mesCartes) {
 	 * 
