@@ -30,23 +30,25 @@ public class Application {
 		Personne connexionPersonne = new Personne();
 		while(chiffre == false) {
 			try {
-				connexionPersonne = menu.gameConnection();
+				connexionPersonne = menu.lancementJeu();
 				chiffre = true;
 			} catch (LireChiffreFormatException e) {
 				System.out.println("Veuillez saisir un chiffre");
 				System.out.println("");
 			}
 		}
-		Grille grille = new Grille();
-		CreationPartie partie = new CreationPartie();
 		
-		partie.setupGrille();
-		grille.setMesCartes(partie.getMesCartes());
 		
-		grille.getMesCartes().forEach(c -> {
-			System.out.print(c.getMonMot().getMot());System.out.print(c.getPos_x());System.out.print(c.getPos_y());
-			System.out.print(c.getCouleur());System.out.println(c.isDecouvert());
-		});
+//		Grille grille = new Grille();
+//		CreationPartie partie = new CreationPartie();
+//		
+//		partie.setupGrille();
+//		grille.setMesCartes(partie.getMesCartes());
+//		
+//		grille.getMesCartes().forEach(c -> {
+//			System.out.print(c.getMonMot().getMot());System.out.print(c.getPos_x());System.out.print(c.getPos_y());
+//			System.out.print(c.getCouleur());System.out.println(c.isDecouvert());
+//		});
 		
 		
 		

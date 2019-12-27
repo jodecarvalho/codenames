@@ -3,17 +3,20 @@ package fr.formation.utile;
 import java.util.InputMismatchException;
 
 import fr.formation.Application;
+import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.IDAOPersonne;
+import fr.formation.dao.exception.NoGameFound;
 import fr.formation.dao.exception.UsernameAlreadyExists;
 import fr.formation.dao.exception.WrongPassword;
 import fr.formation.dao.exception.WrongPseudo;
+import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 
 public class Menu {
 
-	public Personne gameConnection() throws LireChiffreFormatException{
+	public Personne lancementJeu() throws LireChiffreFormatException{
 		boolean bonChiffre = false;
 		Personne personne = new Personne();
 		System.out.println("Bienvenue sur CodeNames Online®");
@@ -43,6 +46,17 @@ public class Menu {
 			catch(InputMismatchException e) {
 				Application.sc.nextLine(); //Pour suppr la touche entrée du flux
 				throw new LireChiffreFormatException();
+			}
+		}
+		bonChiffre = false;
+		while(bonChiffre == false) {
+			try {
+				this.mainMenu();
+				bonChiffre = true;
+			}
+			catch(LireChiffreFormatException e) {
+				System.out.println("Veuillez saisir un chiffre");
+				System.out.println("");
 			}
 		}
 		return personne;
@@ -92,6 +106,47 @@ public class Menu {
 		return personne;
 	}
 	
+	private void mainMenu() throws LireChiffreFormatException{
+		boolean bonChiffre = false;
+		IDAOPartie menu = new DAOPartieHibernate();
+		while(bonChiffre==false) {
+			System.out.println("Vous êtes dans le menu principal de CodeNames Online®");
+			System.out.println("");
+			System.out.println("Pour créer une nouvelle partie, tapez 1.");
+			System.out.println("Pour chercher une partie en cours de création, tapez 2.");
+			System.out.println("Pour regarder une partie en cours, tapez 3.");
+			System.out.println("Pour afficher votre historique ou celui d'un autre joueur, tapez 4.");
+			System.out.println("Pour vous déconnecter du jeu, tapez 0.");
+			try {
+					int a = Application.sc.nextInt();
+					if(a == 1) {
+						System.out.println("ça on verra avec l'ami Camille");
+						System.out.println("");
+						bonChiffre = true;
+					}
+					else {
+						if(a == 2) {
+							try {
+								menu.rejoindrePartie();
+								bonChiffre = true;
+							}
+							catch(NoGameFound e) {
+								System.out.println("Aucune partie en cours de création n'a été trouvée.");
+								System.out.println("");
+							}
+						}
+						else {
+							System.out.println("Veullez saisir un des chiffres proposés dans le menu.");
+							System.out.println("");
+						}
+					}
+			}
+			catch(InputMismatchException e) {
+				Application.sc.nextLine(); //Pour suppr la touche entrée du flux
+				throw new LireChiffreFormatException();
+			}
+		}
+	}
 	
 	
 	
@@ -106,21 +161,6 @@ public class Menu {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-//	private void mainMenu() throws LireChiffreFormatException{
-//		boolean bonChiffre = false;
-//		System.out.println("Vous êtes dans le menu principal de CodeNames Online®");
-//		System.out.println("Pour créer une nouvelle partie, tapez 1.");
-//		System.out.println("Pour chercher une partie en cours de création, tapez 2.");
-//		System.out.println("Pour regarder une partie en cours, tapez 3.");
-//		System.out.println("Pour afficher votre historique ou celui d'un autre joueur, tapez 4.");
-//		System.out.println("Pour vous déconnecter du jeu, tapez 0.");
-//	}
 //	private Personne personne = new Personne();
 //	
 //	
