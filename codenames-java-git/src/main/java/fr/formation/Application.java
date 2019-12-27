@@ -20,6 +20,7 @@ import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 import fr.formation.utile.Menu;
 
+
 public class Application {
 	
 	public static Scanner sc = new Scanner(System.in);

@@ -104,7 +104,7 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 			tx.commit();
 		}
 		catch(Exception e) {}
-		System.out.println("Connexion réussie, bienvenue");
+		System.out.println("Connexion rï¿½ussie, bienvenue");
 		System.out.println("");
 		return personne;
 	}
@@ -116,7 +116,7 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 		myQuery.setParameter("lepseudo", pseudo);
 		try {
 			if(myQuery.getSingleResult().getPassword().equals(password)) {
-				System.out.println("Connexion réussie");
+				System.out.println("Connexion rï¿½ussie");
 				System.out.println("");
 				personne.setPseudo(pseudo);
 				personne.setPassword(password);
@@ -129,6 +129,15 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 			throw new WrongPseudo();
 		}
 		return personne;
+	}
+	
+	@Override
+	public List<Personne> findPartie(int id) {
+		// TODO Auto-generated method stub
+		return em
+				.createQuery("select p from Personne p inner join p.joueurs j where j.partie.id = :idPartie", Personne.class)
+				.setParameter("idPartie", id)
+				.getResultList();
 	}
 
 }
