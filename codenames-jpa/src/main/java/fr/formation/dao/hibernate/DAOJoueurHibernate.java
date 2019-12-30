@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import fr.formation.dao.IDAOJoueur;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.model.Joueur;
+import fr.formation.model.Personne;
 
 public class DAOJoueurHibernate extends DAOConnectionHibernate implements IDAOJoueur{
 
@@ -77,6 +78,17 @@ public class DAOJoueurHibernate extends DAOConnectionHibernate implements IDAOJo
 		// TODO Auto-generated method stub
 
 		return null;
+	}
+
+	@Override
+	public void afficherJoueur(Joueur joueur) {
+		Joueur myQuery = em
+				.createQuery("select j from Joueur j where j.id = :leid", Joueur.class)
+				.setParameter("leid", joueur.getId())
+				.getSingleResult();
+		System.out.println("Pseudo du joueur: "+myQuery.getPersonne().getPseudo()
+				+", équipe du joueur: "+joueur.getCouleur()
+				+", rôle du joueur: "+joueur.getRole());
 	}
 
 }

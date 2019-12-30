@@ -5,10 +5,11 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 
 import fr.formation.dao.IDAO;
+import fr.formation.dao.IDAOCarte;
 import fr.formation.model.Carte;
 import fr.formation.model.Mot;
 
-public class DAOCarteHibernate extends DAOConnectionHibernate implements IDAO <Carte, Integer>{
+public class DAOCarteHibernate extends DAOConnectionHibernate implements IDAOCarte{
 
 	@Override
 	public List<Carte> findAll() {
@@ -69,9 +70,7 @@ public class DAOCarteHibernate extends DAOConnectionHibernate implements IDAO <C
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
-		}
-		
-		
+		}	
 	}
 
 }

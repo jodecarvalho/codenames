@@ -31,7 +31,7 @@ public class Partie {
 	@Column(name="ETAT_PARTIE",length = 100, nullable = false)
 	@NotEmpty
 	@Size(max = 100)
-	private String etat; //3 états possibles: en cours(en cours de jeu), création(en cours de création), en attente de joueurs, terminée
+	private String etat; //3 états possibles: enCours(en cours de jeu), creation(en cours de création) donc en attente de joueurs, terminee
 	
 	public String getEtat() {
 		return etat;

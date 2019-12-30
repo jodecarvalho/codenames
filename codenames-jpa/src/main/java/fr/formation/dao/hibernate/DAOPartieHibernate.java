@@ -25,21 +25,20 @@ public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAOPa
 	public Partie save(Partie entity) {
 		// TODO Auto-generated method stub
 		EntityTransaction tx = em.getTransaction();
-		Partie entityMerge = null;
 		tx.begin();
 		try {
 			if(entity.getId() == 0) {
-				em.persist(entity);
+				 em.persist(entity);
 			}
 			else {
-				entityMerge = em.merge(entity);			
+				entity = em.merge(entity);			
 			}
 			tx.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		}		
-		return entityMerge;
+		return entity;
 	}
 
 	@Override

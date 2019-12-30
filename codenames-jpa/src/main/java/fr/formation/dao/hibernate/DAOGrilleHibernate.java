@@ -5,12 +5,13 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 
 import fr.formation.dao.IDAO;
-
+import fr.formation.dao.IDAOGrille;
+import fr.formation.model.Carte;
 import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 
-public class DAOGrilleHibernate extends DAOConnectionHibernate implements IDAO <Grille, Integer>{
+public class DAOGrilleHibernate extends DAOConnectionHibernate implements IDAOGrille{
 
 	@Override
 	public List<Grille> findAll() {
@@ -68,11 +69,23 @@ public class DAOGrilleHibernate extends DAOConnectionHibernate implements IDAO <
 			em.getTransaction().begin();
 			em.remove(em.merge(joueur));
 			em.getTransaction().commit();
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 			em.getTransaction().rollback();
 		}
+		
+	}
+
+	@Override
+	public void afficherGrille(Grille grille) {
+		List<Carte> myQuery = em
+				.createQuery("select g from Grille g where g.id = :leid", Grille.class)
+				.setParameter("leid", grille.getId())
+				.getSingleResult()
+				.getMesCartes();
+		myQuery.forEach(c -> {
+			System.out.println();
+		});
 		
 	}
 

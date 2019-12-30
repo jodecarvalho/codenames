@@ -6,4 +6,5 @@ import fr.formation.model.Joueur;
 
 public interface IDAOJoueur extends IDAO<Joueur, Integer>{
 	public List<Joueur> findJoueursPartie(int id);
+	public void afficherJoueur(Joueur joueur);
 } 

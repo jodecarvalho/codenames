@@ -35,20 +35,19 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	public Personne save(Personne entity) {
 		// TODO Auto-generated method stub
 		EntityTransaction tx = em.getTransaction();
-		Personne entityMerge = null;
 		tx.begin();
 		try {
 			if (entity.getId() == 0) {
 				em.persist(entity);
 			} else {
-				entityMerge = em.merge(entity);
+				entity = em.merge(entity);
 			}
 			tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			tx.rollback();
 		}
-		return entityMerge;
+		return entity;
 	}
 
 	@Override
@@ -69,7 +68,7 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	@Override
 	public void deleteById(Integer id) {
 		// TODO Auto-generated method stub
-		Joueur joueur = em.find(Joueur.class, id);
+		Personne joueur = em.find(Personne.class, id);
 		try {
 			em.getTransaction().begin();
 			em.remove(em.merge(joueur));
@@ -144,7 +143,7 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	@Override
 	public List<Partie> listeParties(String pseudo) throws NoGameFound {
 		List<Partie>myQuery = em
-				.createQuery("select p from Partie p inner join p.mesJoueurs j where j.personne.pseudo = :lepseudo", Partie.class)
+				.createQuery("select distinct p from Partie p inner join p.mesJoueurs j where j.personne.pseudo = :lepseudo", Partie.class)
 				.setParameter("lepseudo", pseudo)
 				.getResultList();
 		if (myQuery.size()==0) {

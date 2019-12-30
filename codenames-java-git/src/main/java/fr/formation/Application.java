@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 
 import fr.formation.dao.IDAO;
 import fr.formation.dao.IDAOPartie;
+import fr.formation.dao.IDAOPersonne;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.dao.hibernate.DAOPersonneHibernate;
@@ -31,7 +32,10 @@ public class Application {
 	public static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		Persistence.createEntityManagerFactory("NomPersistenceUnit");
+		IDAOPersonne oui = new DAOPersonneHibernate();
+		Personne personne = new Personne();
+		oui.deleteById(7);
+		//Persistence.createEntityManagerFactory("NomPersistenceUnit");
 //		boolean chiffre = false;
 //		Menu menu = new Menu();
 //		Personne connexionPersonne = new Personne();
