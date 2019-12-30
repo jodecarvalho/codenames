@@ -136,8 +136,20 @@ public class Menu {
 							}
 						}
 						else {
-							System.out.println("Veullez saisir un des chiffres proposés dans le menu.");
-							System.out.println("");
+							if(a==3) {
+								try {
+									menu.spectatePartie();
+									bonChiffre = true;
+								}
+								catch(NoGameFound e) {
+									System.out.println("Aucune partie en cours n'a été trouvée.");
+									System.out.println("");
+								}
+							}
+							else {
+								System.out.println("Veullez saisir un des chiffres proposés dans le menu.");
+								System.out.println("");
+							}
 						}
 					}
 			}

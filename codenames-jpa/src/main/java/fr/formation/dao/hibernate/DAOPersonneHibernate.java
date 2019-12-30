@@ -9,11 +9,12 @@ import javax.persistence.TypedQuery;
 
 
 import fr.formation.dao.IDAOPersonne;
+import fr.formation.dao.exception.NoGameFound;
 import fr.formation.dao.exception.UsernameAlreadyExists;
 import fr.formation.dao.exception.WrongPassword;
 import fr.formation.dao.exception.WrongPseudo;
 import fr.formation.model.Joueur;
-
+import fr.formation.model.Partie;
 import fr.formation.model.Personne;
 
 public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAOPersonne {
@@ -135,9 +136,23 @@ public class DAOPersonneHibernate extends DAOConnectionHibernate implements IDAO
 	public List<Personne> findPartie(int id) {
 		// TODO Auto-generated method stub
 		return em
-				.createQuery("select p from Personne p inner join p.joueurs j where j.partie.id = :idPartie", Personne.class)
+				.createQuery("select p from Personne p inner join p.mesJoueurs j where j.partie.id = :idPartie", Personne.class)
 				.setParameter("idPartie", id)
 				.getResultList();
+	}
+
+	@Override
+	public List<Partie> listeParties(String pseudo) throws NoGameFound {
+		List<Partie>myQuery = em
+				.createQuery("select p from Partie p inner join p.mesJoueurs j where j.personne.pseudo = :lepseudo", Partie.class)
+				.setParameter("lepseudo", pseudo)
+				.getResultList();
+		if (myQuery.size()==0) {
+			throw new NoGameFound();
+		}
+		else {
+			return myQuery;
+		}
 	}
 
 }

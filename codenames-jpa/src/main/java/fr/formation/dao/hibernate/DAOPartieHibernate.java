@@ -1,15 +1,9 @@
 package fr.formation.dao.hibernate;
 
 import java.util.List;
-
 import javax.persistence.EntityTransaction;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
-
-import fr.formation.dao.IDAO;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.exception.NoGameFound;
-import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 
@@ -90,5 +84,18 @@ public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAOPa
 				System.out.println("Là théoriquement on choisit la partie que l'on veut intégrer, mais ce n'est pas encore codé");
 			}
 	}
+	
+	public void spectatePartie() throws NoGameFound {
+		List<Partie> myQuery = em.createQuery("select p from Partie p where p.etat = 'enCours'", Partie.class)
+				.getResultList();
+		if (myQuery.size() == 0) {
+			throw new NoGameFound();
+		}
+		else {
+			System.out.println("Là théoriquement on choisit la partie que l'on veut intégrer, mais ce n'est pas encore codé");
+		}
+		
+	}
+	
 
 }

@@ -3,8 +3,6 @@ package fr.formation.dao.hibernate;
 import java.util.List;
 
 import javax.persistence.EntityTransaction;
-
-import fr.formation.dao.IDAO;
 import fr.formation.dao.IDAOJoueur;
 import fr.formation.dao.hibernate.DAOConnectionHibernate;
 import fr.formation.model.Joueur;
