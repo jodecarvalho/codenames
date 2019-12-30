@@ -8,17 +8,17 @@ import fr.formation.Application;
 import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 
-public class CreationEquipe {
+public class CreationEquipe extends VariableCreationPartie{
 	
-	private List<Joueur> joueurs = new ArrayList<Joueur>();
-	
-	public List<Joueur> getJoueurs() {
-		return joueurs;
-	}
-
-	public void setJoueurs(List<Joueur> joueurs) {
-		this.joueurs = joueurs;
-	}
+//	private List<Joueur> joueurs = new ArrayList<Joueur>();
+//	
+//	public List<Joueur> getJoueurs() {
+//		return joueurs;
+//	}
+//
+//	public void setJoueurs(List<Joueur> joueurs) {
+//		this.joueurs = joueurs;
+//	}
 	
 	public void setupEquipe(List<Personne> personnes) {
 		for(Personne p : personnes) {
@@ -31,7 +31,7 @@ public class CreationEquipe {
 	public void setCreationJoueur(Personne personne) {
 		Joueur joueur = new Joueur();
 		joueur.setPersonne(personne);
-		this.joueurs.add(joueur);
+		joueurs.add(joueur);
 
 	}
 
@@ -47,7 +47,7 @@ public class CreationEquipe {
 //				compteurRouge = 0;
 //			}			
 			
-			for (int i = 0; i<this.joueurs.size();i++) {
+			for (int i = 0; i<joueurs.size();i++) {
 				
 				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre couleur");
 				System.out.println("Taper 1 pour bleu, 2 pour rouge");
@@ -59,13 +59,13 @@ public class CreationEquipe {
 						int a = Application.sc.nextInt();
 
 						if (a == 1) {
-							this.joueurs.get(i).setCouleur("Bleu");
-							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
+							joueurs.get(i).setCouleur("Bleu");
+							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
 							compteurBleu++;
 							b = false;
 						} else if (a == 2) {
 							this.joueurs.get(i).setCouleur("Rouge");
-							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
+							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
 							compteurRouge++;
 							b = false;
 						}else if(a == 0) {
@@ -96,7 +96,7 @@ public class CreationEquipe {
 			compteurMaitreBleu = 0;
 			compteurMaitreRouge = 0;
 			
-			for (int i = 0; i<this.joueurs.size();i++) {
+			for (int i = 0; i<joueurs.size();i++) {
 				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre rôle");
 				System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrêter");
 				
@@ -106,13 +106,13 @@ public class CreationEquipe {
 						int a = Application.sc.nextInt();
 
 						if (a == 1) {
-							this.joueurs.get(i).setRole("Maitre");
-							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
-							if(this.joueurs.get(i).getCouleur().equals("Bleu")) {
+							joueurs.get(i).setRole("Maitre");
+							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
+							if(joueurs.get(i).getCouleur().equals("Bleu")) {
 								compteurMaitreBleu++;
 								System.out.println("compteurMaitreBleu = " + compteurMaitreBleu);
 							}
-							else if(this.joueurs.get(i).getCouleur().equals("Rouge")) {
+							else if(joueurs.get(i).getCouleur().equals("Rouge")) {
 								compteurMaitreRouge++;
 								System.out.println("compteurMaitreRouge = " + compteurMaitreRouge);
 							}
@@ -121,8 +121,8 @@ public class CreationEquipe {
 							}
 							b = false;
 						} else if (a == 2) {
-							this.joueurs.get(i).setRole("Agent");
-							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
+							joueurs.get(i).setRole("Agent");
+							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
 							b = false;
 						} else if(a == 0) {
 							compteurMaitreBleu=0;//Pour sortir de la première boucle

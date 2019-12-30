@@ -13,34 +13,34 @@ import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 
-public class CreationPartie {
-	private List<Carte> listeCartes = new ArrayList<Carte>();
-	private List<Joueur> listeJoueurs = new ArrayList<Joueur>();
+public class CreationPartie extends VariableCreationPartie{
+//	private List<Carte> listeCartes = new ArrayList<Carte>();
+//	private List<Joueur> listeJoueurs = new ArrayList<Joueur>();
 
-	public List<Carte> getListeCartes() {
-		return listeCartes;
-	}
-
-	public void setListeCartes(List<Carte> listeCartes) {
-		this.listeCartes = listeCartes;
-	}
-
-	public List<Joueur> getListeJoueurs() {
-		return listeJoueurs;
-	}
-
-	public void setListeJoueurs(List<Joueur> listeJoueurs) {
-		this.listeJoueurs = listeJoueurs;
-	}
+//	public List<Carte> getListeCartes() {
+//		return listeCartes;
+//	}
+//
+//	public void setListeCartes(List<Carte> listeCartes) {
+//		this.listeCartes = listeCartes;
+//	}
+//
+//	public List<Joueur> getListeJoueurs() {
+//		return listeJoueurs;
+//	}
+//
+//	public void setListeJoueurs(List<Joueur> listeJoueurs) {
+//		this.listeJoueurs = listeJoueurs;
+//	}
 
 	public void setupPartie(List<Personne> personnes) {
 		CreationGrille cGrille = new CreationGrille();
 		CreationEquipe cEquipe = new CreationEquipe();
+		
 		cGrille.setupGrille();
-		listeCartes = cGrille.getMesCartes();
+//		listeCartes = cGrille.getMesCartes();
 		cEquipe.setupEquipe(personnes);
-		listeJoueurs = cEquipe.getJoueurs();
+//		listeJoueurs = cEquipe.getJoueurs();
 	}
-	
 
 }

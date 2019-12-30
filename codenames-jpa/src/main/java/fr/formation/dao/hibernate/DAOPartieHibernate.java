@@ -1,5 +1,6 @@
 package fr.formation.dao.hibernate;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityTransaction;
 import fr.formation.dao.IDAOPartie;
@@ -73,15 +74,15 @@ public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAOPa
 	}
 
 	@Override
-	public void rejoindrePartie() throws NoGameFound {
+	public List<Partie> rejoindrePartie() throws NoGameFound {
 			List<Partie> myQuery = em.createQuery("select p from Partie p where p.etat = 'creation'", Partie.class)
 					.getResultList();
 			if (myQuery.size() == 0) {
 				throw new NoGameFound();
 			}
 			else {
-				System.out.println("Là théoriquement on choisit la partie que l'on veut intégrer, mais ce n'est pas encore codé");
-			}
+				return myQuery;
+			}	
 	}
 	
 	public void spectatePartie() throws NoGameFound {

@@ -7,26 +7,26 @@ import fr.formation.dao.hibernate.DAOMotHibernate;
 import fr.formation.model.Carte;
 import fr.formation.model.Grille;
 
-public class CreationGrille {
+public class CreationGrille extends VariableCreationPartie{
 	
-	private Grille grille = new Grille();
-	private List<Carte> mesCartes = new ArrayList<Carte>();
+//	private Grille grille = new Grille();
+//	private List<Carte> cartes = new ArrayList<Carte>();
 	
-	public Grille getGrille() {
-		return grille;
-	}
-
-	public void setGrille(Grille grille) {
-		this.grille = grille;
-	}
-
-	public List<Carte> getMesCartes() {
-		return mesCartes;
-	}
-
-	public void setMesCartes(List<Carte> mesCartes) {
-		this.mesCartes = mesCartes;
-	}
+//	public Grille getGrille() {
+//		return grille;
+//	}
+//
+//	public void setGrille(Grille grille) {
+//		this.grille = grille;
+//	}
+//
+//	public List<Carte> getMesCartes() {
+//		return cartes;
+//	}
+//
+//	public void setMesCartes(List<Carte> mesCartes) {
+//		this.cartes = mesCartes;
+//	}
 	
 	public void setupGrille() {
 		this.setupListMot();
@@ -47,8 +47,8 @@ public class CreationGrille {
 			boolean b = true;
 			while (b) {
 				b = false;
-				for (int j = 0; j < mesCartes.size(); j++) {
-					String motGrille = mesCartes.get(j).getMonMot().getMot();
+				for (int j = 0; j < cartes.size(); j++) {
+					String motGrille = cartes.get(j).getMonMot().getMot();
 					String newMot = maCarte.getMonMot().getMot();
 					if (motGrille.equals(newMot)) {
 						maCarte.getMonMot().setIdRandom();
@@ -58,7 +58,7 @@ public class CreationGrille {
 				}
 			}
 
-			mesCartes.add(maCarte);
+			cartes.add(maCarte);
 
 		}
 	}
@@ -67,8 +67,8 @@ public class CreationGrille {
 		for (int i = 0; i < 25; i += 5) {
 			for (int j = 0; j < 5; j++) {
 				if ((i + j) < 25) {// If normalement pas utile mais pas sécurité ....
-					mesCartes.get(i + j).setPos_x((int) (i / 5));
-					mesCartes.get(i + j).setPos_y(j);
+					cartes.get(i + j).setPos_x((int) (i / 5));
+					cartes.get(i + j).setPos_y(j);
 				}
 			}
 		}
@@ -86,25 +86,25 @@ public class CreationGrille {
 
 			if (c == 0) {
 				if (r != 0) {
-					mesCartes.get(i).setCouleur("Rouge");
+					cartes.get(i).setCouleur("Rouge");
 					r--;
 					i++;
 				}
 			} else if (c == 1) {
 				if (b != 0) {
-					mesCartes.get(i).setCouleur("Bleu");
+					cartes.get(i).setCouleur("Bleu");
 					b--;
 					i++;
 				}
 			} else if (c == 2) {
 				if (n != 0) {
-					mesCartes.get(i).setCouleur("Noir");
+					cartes.get(i).setCouleur("Noir");
 					n--;
 					i++;
 				}
 			} else if (c == 3) {
 				if (t != 0) {
-					mesCartes.get(i).setCouleur("Blanc");
+					cartes.get(i).setCouleur("Blanc");
 					t--;
 					i++;
 				}
@@ -120,7 +120,7 @@ public class CreationGrille {
 
 	public void setupDecouvertMot() {
 		for (int i = 0; i < 25; i++) {
-			mesCartes.get(i).setDecouvert(false);
+			cartes.get(i).setDecouvert(false);
 		}
 	}
 

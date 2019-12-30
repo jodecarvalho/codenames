@@ -25,6 +25,7 @@ import fr.formation.utile.CreationPartie;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 import fr.formation.utile.Menu;
+import fr.formation.utile.VariableCreationPartie;
 
 
 public class Application {
@@ -85,16 +86,16 @@ public class Application {
 //			System.out.print(c.getPersonne().getPseudo() + " " + c.getCouleur()  + " " + c.getRole());
 //		});
 //		
-//		//Taper 1 pour créer une partie
+//		//Taper 1 pour crï¿½er une partie
 //		Partie partie = new Partie();
 //		IDAOPartie daoPartie = new DAOPartieHibernate();
 //		daoPartie.save(partie);
 //		
 //		//Taper 2 pour rejoindre une partie
-//		List<Partie> parties = new ArrayList<Partie>();//Find partie en cours de création
+//		List<Partie> parties = new ArrayList<Partie>();//Find partie en cours de crï¿½ation
 //		IDAOPartie daoPartie = new DOAPartieHibernate
 //		
-//		//Créer la partie
+//		//Crï¿½er la partie
 //		CreationPartie cPartie = new CreationPartie();
 		
 		

@@ -51,7 +51,7 @@ public class Menu {
 		bonChiffre = false;
 		while(bonChiffre == false) {
 			try {
-				this.mainMenu();
+				this.mainMenu(personne);
 				bonChiffre = true;
 			}
 			catch(LireChiffreFormatException e) {
@@ -106,7 +106,7 @@ public class Menu {
 		return personne;
 	}
 	
-	private void mainMenu() throws LireChiffreFormatException{
+	private void mainMenu(Personne personne) throws LireChiffreFormatException{
 		boolean bonChiffre = false;
 		IDAOPartie menu = new DAOPartieHibernate();
 		while(bonChiffre==false) {
@@ -120,14 +120,17 @@ public class Menu {
 			try {
 					int a = Application.sc.nextInt();
 					if(a == 1) {
-						System.out.println("ça on verra avec l'ami Camille");
-						System.out.println("");
+						MenuCreationPartie creationPartie = new MenuCreationPartie();
+						int id = creationPartie.setPartie(personne);
+						creationPartie.attenteJoueurs(id);
 						bonChiffre = true;
 					}
 					else {
 						if(a == 2) {
 							try {
 								menu.rejoindrePartie();
+								MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
+								rejoindreLaPartie.rejoindrePartie(personne);
 								bonChiffre = true;
 							}
 							catch(NoGameFound e) {
