@@ -84,8 +84,11 @@ public class DAOGrilleHibernate extends DAOConnectionHibernate implements IDAOGr
 				.getSingleResult()
 				.getMesCartes();
 		myQuery.forEach(c -> {
-			System.out.println();
-		});
+			System.out.println("Mot de la carte: "+c.getMonMot().getMot()
+					+", couleur de la carte: "+c.getCouleur()
+					+", position x et y de la carte: "+c.getPos_x()+c.getPos_y()
+					+", carte découverte? "+ c.isDecouvert());
+				});
 		
 	}
 

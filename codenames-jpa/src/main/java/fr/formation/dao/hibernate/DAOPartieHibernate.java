@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityTransaction;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.exception.NoGameFound;
+import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 
@@ -95,6 +96,14 @@ public class DAOPartieHibernate extends DAOConnectionHibernate implements IDAOPa
 			System.out.println("Là théoriquement on choisit la partie que l'on veut intégrer, mais ce n'est pas encore codé");
 		}
 		
+	}
+
+	@Override
+	public Grille afficherGrillePartie(Partie partie) {
+		return em
+				.createQuery("select g from Grille g where g.partie.id = :leid", Grille.class)
+				.setParameter("leid", partie.getId())
+				.getSingleResult();
 	}
 	
 

@@ -33,22 +33,19 @@ public class Application {
 	public static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		IDAOPersonne oui = new DAOPersonneHibernate();
-		Personne personne = new Personne();
-		oui.deleteById(7);
 		//Persistence.createEntityManagerFactory("NomPersistenceUnit");
-//		boolean chiffre = false;
-//		Menu menu = new Menu();
-//		Personne connexionPersonne = new Personne();
-//		while(chiffre == false) {
-//			try {
-//				connexionPersonne = menu.lancementJeu();
-//				chiffre = true;
-//			} catch (LireChiffreFormatException e) {
-//				System.out.println("Veuillez saisir un chiffre");
-//				System.out.println("");
-//			}
-//		}
+		boolean chiffre = false;
+		Menu menu = new Menu();
+		Personne connexionPersonne = new Personne();
+		while(chiffre == false) {
+			try {
+				connexionPersonne = menu.lancementJeu();
+				chiffre = true;
+			} catch (LireChiffreFormatException e) {
+				System.out.println("Veuillez saisir un chiffre");
+				System.out.println("");
+			}
+		}
 		
 		
 //		Grille grille = new Grille();
