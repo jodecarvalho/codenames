@@ -45,7 +45,7 @@ public class MenuRejoindrePartie {
 					joueurs.add(nouveauJoueur);
 					partie.setMesJoueurs(joueurs);
 					daoPartie.save(partie);
-					System.out.println("Enregistrer pour la partie " + id);
+					System.out.println("Enregistré pour la partie " + id);
 					break;
 				}
 				else if(id == 0) {

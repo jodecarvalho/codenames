@@ -25,7 +25,7 @@ import fr.formation.utile.CreationPartie;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 import fr.formation.utile.Menu;
-import fr.formation.utile.VariableCreationPartie;
+
 
 
 public class Application {
