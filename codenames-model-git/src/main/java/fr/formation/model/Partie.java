@@ -2,6 +2,7 @@ package fr.formation.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Partie {
 	@Column(name = "ID_PARTIE")
 	private int id;
 	
-	@OneToOne(mappedBy = "partie")
+	@OneToOne(mappedBy = "partie", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Grille maGrille = new Grille();
 	
 	@OneToMany(mappedBy = "partie")

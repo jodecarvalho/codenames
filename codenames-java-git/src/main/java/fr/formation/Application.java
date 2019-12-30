@@ -96,9 +96,7 @@ public class Application {
 //		CreationPartie cPartie = new CreationPartie();
 		
 		
-		
-		
-		//DAOConnectionHibernate.close();
+		DAOConnectionHibernate.close();
 
 
 	}

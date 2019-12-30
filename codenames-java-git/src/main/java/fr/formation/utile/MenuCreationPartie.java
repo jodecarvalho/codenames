@@ -6,6 +6,7 @@ import java.util.List;
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.hibernate.DAOPartieHibernate;
+import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 import fr.formation.model.Personne;
@@ -18,12 +19,14 @@ public class MenuCreationPartie {
 				
 		Joueur createurJoueur = new Joueur();
 		createurJoueur.setPersonne(personne);
+		//Grille grille = new Grille();
 
 		Partie partie = new Partie();
 		Partie partieSave = new Partie();
 		List<Joueur> joueurs = new ArrayList<Joueur>();
 		joueurs.add(createurJoueur);
 		partie.setMesJoueurs(joueurs);
+		//partie.setMaGrille(grille);
 		partie.setEtat("creation");
 		partieSave = daoPartie.save(partie);
 		return partieSave.getId();
