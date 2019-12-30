@@ -31,7 +31,7 @@ public class CreationEquipe {
 	public void setCreationJoueur(Personne personne) {
 		Joueur joueur = new Joueur();
 		joueur.setPersonne(personne);
-		joueurs.add(joueur);
+		this.joueurs.add(joueur);
 
 	}
 
@@ -42,14 +42,14 @@ public class CreationEquipe {
 		int compteurRouge = 0;
 
 		while (compteurBleu < 2 || compteurRouge < 2) {
-			if(compteurBleu < 2 || compteurRouge < 2) {
-				compteurBleu = 0;
-				compteurRouge = 0;
-			}			
+//			if(compteurBleu < 2 || compteurRouge < 2) {
+//				compteurBleu = 0;
+//				compteurRouge = 0;
+//			}			
 			
-			for (Joueur j : joueurs) {
+			for (int i = 0; i<this.joueurs.size();i++) {
 				
-				System.out.println("Personne " + j.getPersonne().getPseudo() + "choissé votre couleur");
+				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre couleur");
 				System.out.println("Taper 1 pour bleu, 2 pour rouge");
 
 				boolean b = true;
@@ -59,13 +59,19 @@ public class CreationEquipe {
 						int a = Application.sc.nextInt();
 
 						if (a == 1) {
-							j.setCouleur("Bleu");
+							this.joueurs.get(i).setCouleur("Bleu");
+							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
 							compteurBleu++;
 							b = false;
 						} else if (a == 2) {
-							j.setCouleur("Rouge");
+							this.joueurs.get(i).setCouleur("Rouge");
+							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
 							compteurRouge++;
 							b = false;
+						}else if(a == 0) {
+							compteurBleu = 5;//Pour sortir de la première boucle
+							compteurRouge = 5;
+							break;
 						} else {
 							System.out.println("Veuillez taper l'un des chiffres proposés.");
 							System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
@@ -90,9 +96,9 @@ public class CreationEquipe {
 			compteurMaitreBleu = 0;
 			compteurMaitreRouge = 0;
 			
-			for (Joueur j : joueurs) {
-				System.out.println("Personne " + j.getPersonne().getPseudo() + "choissé votre rôle");
-				System.out.println("Taper 1 pour Maitre, 2 pour Agent");
+			for (int i = 0; i<this.joueurs.size();i++) {
+				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre rôle");
+				System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrêter");
 				
 				boolean b = true;
 				while (b) {
@@ -100,25 +106,32 @@ public class CreationEquipe {
 						int a = Application.sc.nextInt();
 
 						if (a == 1) {
-							j.setRole("Maitre");
-							if(j.getCouleur().equals("Bleu")) {
+							this.joueurs.get(i).setRole("Maitre");
+							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
+							if(this.joueurs.get(i).getCouleur().equals("Bleu")) {
 								compteurMaitreBleu++;
+								System.out.println("compteurMaitreBleu = " + compteurMaitreBleu);
 							}
-							if(j.getCouleur().equals("Rouge")) {
+							else if(this.joueurs.get(i).getCouleur().equals("Rouge")) {
 								compteurMaitreRouge++;
+								System.out.println("compteurMaitreRouge = " + compteurMaitreRouge);
 							}
 							else {
 								System.out.println("Le joueur n'a pas de couleur !?");
 							}
-							
 							b = false;
 						} else if (a == 2) {
-							j.setCouleur("Agent");
+							this.joueurs.get(i).setRole("Agent");
+							System.out.println(this.joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + this.joueurs.get(i).getCouleur());
 							b = false;
-						} else {
-							System.out.println("Veuillez taper l'un des chiffres proposés.");
-							System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
-									+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
+						} else if(a == 0) {
+							compteurMaitreBleu=0;//Pour sortir de la première boucle
+							compteurMaitreRouge=0;
+							b = false;
+						}
+						else {
+							System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + "choissé votre rôle");
+							System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrête");
 						}
 
 					} catch (InputMismatchException e) {
@@ -126,7 +139,6 @@ public class CreationEquipe {
 						System.out.println("On a dit un nombre !");
 					}
 				}
-				
 			}
 		}while (compteurMaitreBleu > 1 || compteurMaitreRouge > 1);
 		

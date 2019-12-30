@@ -14,26 +14,8 @@ import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 
 public class CreationPartie {
-	private CreationGrille cGrille = new CreationGrille();
-	private CreationEquipe cEquipe = new CreationEquipe();
 	private List<Carte> listeCartes = new ArrayList<Carte>();
 	private List<Joueur> listeJoueurs = new ArrayList<Joueur>();
-
-	public CreationGrille getcGrille() {
-		return cGrille;
-	}
-
-	public void setcGrille(CreationGrille cGrille) {
-		this.cGrille = cGrille;
-	}
-
-	public CreationEquipe getcEquipe() {
-		return cEquipe;
-	}
-
-	public void setcEquipe(CreationEquipe cEquipe) {
-		this.cEquipe = cEquipe;
-	}
 
 	public List<Carte> getListeCartes() {
 		return listeCartes;
@@ -52,10 +34,13 @@ public class CreationPartie {
 	}
 
 	public void setupPartie(List<Personne> personnes) {
+		CreationGrille cGrille = new CreationGrille();
+		CreationEquipe cEquipe = new CreationEquipe();
 		cGrille.setupGrille();
 		listeCartes = cGrille.getMesCartes();
 		cEquipe.setupEquipe(personnes);
 		listeJoueurs = cEquipe.getJoueurs();
 	}
+	
 
 }
