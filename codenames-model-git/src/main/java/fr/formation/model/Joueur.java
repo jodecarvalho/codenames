@@ -20,13 +20,11 @@ public class Joueur {
 	@Column(name = "ID_JOUEUR")
 	private int id;
 	
-	@Column(name="COULEUR_JOUEUR",length = 10, nullable = false)
-	@NotEmpty
+	@Column(name="COULEUR_JOUEUR",length = 10, nullable = true)
 	@Size(max = 10)
 	private String couleur;
 	
-	@Column(name="ROLE_JOUEUR",length = 50, nullable = false)
-	@NotEmpty
+	@Column(name="ROLE_JOUEUR",length = 50, nullable = true)
 	@Size(max = 50)
 	private String role;
 	
