@@ -37,13 +37,18 @@ public class MenuCreationPartie {
 		IDAOPartie daoPartie = new DAOPartieHibernate();
 		
 		while(true) {
-			int a = Application.sc.nextInt();
-			if(a == 0) {
-				Partie partie = new Partie();
-				partie = daoPartie.findById(id);
-				partie.setEtat("enCours");
-				daoPartie.save(partie);
-				break;
+			try {
+				int a = Application.sc.nextInt();
+				if(a == 0) {
+					Partie partie = new Partie();
+					partie = daoPartie.findById(id);
+					partie.setEtat("enCours");
+					daoPartie.save(partie);
+					break;
+				}
+			}catch(Exception e) {
+				e.getStackTrace();
+				System.out.println("ERREUR MenuCreationPartie.attenteJoueurs()");
 			}
 		}
 		
