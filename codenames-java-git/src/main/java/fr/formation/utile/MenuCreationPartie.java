@@ -1,6 +1,7 @@
 package fr.formation.utile;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import fr.formation.Application;
@@ -19,21 +20,19 @@ public class MenuCreationPartie {
 				
 		Joueur createurJoueur = new Joueur();
 		createurJoueur.setPersonne(personne);
-		//Grille grille = new Grille();
 
 		Partie partie = new Partie();
 		Partie partieSave = new Partie();
 		List<Joueur> joueurs = new ArrayList<Joueur>();
 		joueurs.add(createurJoueur);
 		partie.setMesJoueurs(joueurs);
-		//partie.setMaGrille(grille);
 		partie.setEtat("creation");
 		partieSave = daoPartie.save(partie);
 		return partieSave.getId();
 	}
 	
 	public void attenteJoueurs(int id) {
-		System.out.println("Attente de joueurs (taper 0 pour arrêter");
+		System.out.println("Attente de joueurs (taper 0 pour arrêter)");
 		IDAOPartie daoPartie = new DAOPartieHibernate();
 		
 		while(true) {
@@ -46,7 +45,8 @@ public class MenuCreationPartie {
 					daoPartie.save(partie);
 					break;
 				}
-			}catch(Exception e) {
+			}catch(InputMismatchException e) {
+				Application.sc.nextLine();
 				e.getStackTrace();
 				System.out.println("ERREUR MenuCreationPartie.attenteJoueurs()");
 			}
