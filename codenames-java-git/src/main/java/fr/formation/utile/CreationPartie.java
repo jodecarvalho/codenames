@@ -5,8 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 import fr.formation.Application;
-import fr.formation.dao.IDAO;
-import fr.formation.dao.hibernate.DAOMotHibernate;
+
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Carte;
 import fr.formation.model.Grille;

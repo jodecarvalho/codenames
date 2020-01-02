@@ -7,14 +7,16 @@
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>
   	<maven.compiler.target>1.8</maven.compiler.target>
+  	<spring.version>5.2.2.RELEASE</spring.version>
   </properties>
   
   <dependencies>  
   	<dependency>
   		<groupId>fr.formation</groupId>
-  		<artifactId>codenames-jpa</artifactId>
+  		<artifactId>codenames-data-jpa</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
+<<<<<<< Updated upstream
   	<!-- 
   	<dependency>
   		<groupId>fr.formation</groupId>
@@ -22,7 +24,22 @@
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	-->
+=======
+  	
+  	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.12</version>
+		<scope>test</scope>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>${spring.version}</version>
+		<scope>test</scope>
+	</dependency>
+>>>>>>> Stashed changes
   </dependencies>
-  
   
 </project>

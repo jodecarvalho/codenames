@@ -1,26 +1,6 @@
 package fr.formation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import java.util.Scanner;
-
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-
-import fr.formation.dao.IDAO;
-import fr.formation.dao.IDAOPartie;
-import fr.formation.dao.IDAOPersonne;
-import fr.formation.dao.hibernate.DAOConnectionHibernate;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
-import fr.formation.dao.hibernate.DAOPersonneHibernate;
-import fr.formation.model.Grille;
-import fr.formation.model.Joueur;
-import fr.formation.model.Partie;
-import fr.formation.model.Personne;
-import fr.formation.utile.CreationEquipe;
-import fr.formation.utile.CreationPartie;
 
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
@@ -96,7 +76,7 @@ public class Application {
 //		CreationPartie cPartie = new CreationPartie();
 		
 		
-		DAOConnectionHibernate.close();
+	
 
 
 	}

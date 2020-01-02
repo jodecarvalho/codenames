@@ -21,7 +21,7 @@ public class Personne{
 	@Column(name = "ID_PERSONNE")
 	private int id;
 	
-	@Column(name="PSEUDO_PERSONNE",length = 50, nullable = false)
+	@Column(name="PSEUDO_PERSONNE",length = 50, nullable = false, unique = true)
 	@NotEmpty
 	@Size(max = 50)
 	private String pseudo;
