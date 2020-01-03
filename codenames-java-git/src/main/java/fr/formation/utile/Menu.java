@@ -2,10 +2,14 @@ package fr.formation.utile;
 
 import java.util.InputMismatchException;
 
+<<<<<<< Updated upstream
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> Stashed changes
 
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
@@ -100,13 +104,20 @@ public class Menu {
 		return personne;
 	}
 	
+<<<<<<< Updated upstream
 	@Transactional
 	private Personne reconnexionPersonne(Personne personne) {
 		//IDAOPersonne menu = new DAOPersonneHibernate();
+=======
+	private Personne reconnexionPersonne() {
+		
+		Personne personne = new Personne();
+>>>>>>> Stashed changes
 		boolean personneExist = false;
 		while(personneExist == false) {
 			System.out.println("Veuillez saisir votre pseudo.");
 			String pseudo = Application.sc.next();
+<<<<<<< Updated upstream
 			System.out.println("Veuillez saisir votre mot de passe");
 			String password = Application.sc.next();
 			try {
@@ -122,9 +133,15 @@ public class Menu {
 			catch(WrongPassword e) {
 				System.out.println("Mauvais mot de passe, veuillez réessayer.");
 				System.out.println("");
+=======
+			if(menu.findByPseudo(pseudo).isPresent()) {
+				
+>>>>>>> Stashed changes
 			}
 		}
 		return personne;
+		String password = Application.sc.next();
+		System.out.println("Veuillez saisir votre mot de passe");
 	}
 	
 	@Transactional
