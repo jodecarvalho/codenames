@@ -46,7 +46,6 @@ public class Application {
 	
 	public void run(String[] args) {
 		boolean chiffre = false;
-		//Menu menu = new Menu();
 		Personne connexionPersonne = new Personne();
 		while(chiffre == false) {
 			try {
