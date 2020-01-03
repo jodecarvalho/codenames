@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
+import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.dao.IDAOPersonne;
 import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
@@ -20,11 +21,11 @@ import fr.formation.model.Personne;
 @Service
 public class MenuCreationPartie {
 	@Autowired
-	private IDAOPartie daoPartie;
+	private IDAOPartie daoPartie ;
 	
 	@Transactional
 	public int setPartie(Personne personne) {
-		System.out.println("Création d'une partie avec votre identifiant");
+		System.out.println("Crï¿½ation d'une partie avec votre identifiant");
 		//IDAOPartie daoPartie = new DAOPartieHibernate();
 				
 		Joueur createurJoueur = new Joueur();
@@ -42,7 +43,7 @@ public class MenuCreationPartie {
 	
 	@Transactional
 	public void attenteJoueurs(int id) {
-		System.out.println("Attente de joueurs (taper 0 pour arrêter)");
+		System.out.println("Attente de joueurs (taper 0 pour arrï¿½ter)");
 		//IDAOPartie daoPartie = new DAOPartieHibernate();
 		
 		while(true) {

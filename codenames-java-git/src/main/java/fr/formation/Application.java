@@ -54,5 +54,9 @@ public class Application {
 			}
 		}
 	}
+	
+	public void run(String[] args) {
+		
+	}
 
 }
