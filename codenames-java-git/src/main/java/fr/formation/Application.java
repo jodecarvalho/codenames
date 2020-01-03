@@ -5,14 +5,16 @@ import java.util.Scanner;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-import fr.formation.dao.IDAO;
+import fr.formation.config.AppConfig;
+//import fr.formation.dao.IDAO;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.IDAOPersonne;
-import fr.formation.dao.hibernate.DAOConnectionHibernate;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
-import fr.formation.dao.hibernate.DAOPersonneHibernate;
+//import fr.formation.dao.hibernate.DAOConnectionHibernate;
+//import fr.formation.dao.hibernate.DAOPartieHibernate;
+//import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
@@ -32,6 +34,13 @@ public class Application {
 	
 	public static void main(String[] args) {
 		//Persistence.createEntityManagerFactory("NomPersistenceUnit");
+		AnnotationConfigApplicationContext myContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		myContext.getBean("application", Application.class).run(args);
+		myContext.close();
+		//
+	}
+	
+	public void run(String[] args) {
 		boolean chiffre = false;
 		Menu menu = new Menu();
 		Personne connexionPersonne = new Personne();
@@ -44,12 +53,6 @@ public class Application {
 				System.out.println("");
 			}
 		}
-		
-		DAOConnectionHibernate.close();
-	}
-	
-	public void run(String[] args) {
-		
 	}
 
 }

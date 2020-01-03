@@ -40,7 +40,7 @@ public class Menu {
 			try {
 				int a = Application.sc.nextInt();
 				if (a == 1) {
-				personne = this.reconnexionPersonne(personne);
+				personne = this.reconnexionPersonne();
 				bonChiffre = true;
 				} 
 				else {
@@ -152,12 +152,12 @@ public class Menu {
 						if(a == 2) {
 							try {
 								//menu.rejoindrePartie();
-								menuPartie.rejoindrePartie();
+								//menuPartie.rejoindrePartie();
 								MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
 								rejoindreLaPartie.rejoindrePartie(personne);
 								bonChiffre = true;
 							}
-							catch(NoGameFound e) {
+							catch(Exception e) {
 								System.out.println("Aucune partie en cours de création n'a été trouvée.");
 								System.out.println("");
 							}
@@ -166,11 +166,13 @@ public class Menu {
 							if(a==3) {
 								try {
 									//menu.spectatePartie();
-									menuPartie.spectatePartie();
+									if(menuPartie.findByEtat("enCours") == null) {
+										System.out.println("Aucune partie en cours n'a été trouvée.");
+									}
 									bonChiffre = true;
 								}
-								catch(NoGameFound e) {
-									System.out.println("Aucune partie en cours n'a été trouvée.");
+								catch(Exception e) {
+									System.out.println("ERREUR mainMenu if(a==3)");
 									System.out.println("");
 								}
 							}
