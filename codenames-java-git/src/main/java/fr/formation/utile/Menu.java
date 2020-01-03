@@ -32,6 +32,12 @@ public class Menu {
 	@Autowired
 	private IDAOPartie menuPartie;
 	
+	@Autowired
+	MenuCreationPartie creationPartie;
+	
+	@Autowired
+	MenuRejoindrePartie rejoindreLaPartie;
+	
 	
 	@Transactional
 	public Personne lancementJeu() throws LireChiffreFormatException{
@@ -150,7 +156,7 @@ public class Menu {
 			try {
 					int a = Application.sc.nextInt();
 					if(a == 1) {
-						MenuCreationPartie creationPartie = new MenuCreationPartie();
+						//MenuCreationPartie creationPartie = new MenuCreationPartie();
 						int id = creationPartie.setPartie(personne);
 						creationPartie.attenteJoueurs(id);
 						bonChiffre = true;
@@ -160,7 +166,7 @@ public class Menu {
 							try {
 								//menu.rejoindrePartie();
 								//menuPartie.rejoindrePartie();
-								MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
+								//MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
 								rejoindreLaPartie.rejoindrePartie(personne);
 								bonChiffre = true;
 							}

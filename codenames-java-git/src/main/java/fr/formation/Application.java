@@ -5,6 +5,7 @@ import java.util.Scanner;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -40,9 +41,12 @@ public class Application {
 		//
 	}
 	
+	@Autowired
+	Menu menu;
+	
 	public void run(String[] args) {
 		boolean chiffre = false;
-		Menu menu = new Menu();
+		//Menu menu = new Menu();
 		Personne connexionPersonne = new Personne();
 		while(chiffre == false) {
 			try {
