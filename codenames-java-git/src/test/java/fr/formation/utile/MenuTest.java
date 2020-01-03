@@ -9,11 +9,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.formation.config.JpaConfig;
+import fr.formation.config.AppConfig;
 import fr.formation.dao.IDAOPersonne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes= {JpaConfig.class})
+@ContextConfiguration(classes= {AppConfig.class})
 @Transactional
 @Rollback(true)
 public class MenuTest {
@@ -25,7 +25,5 @@ public class MenuTest {
 	public static void beforeClass() {
 		System.out.println("Démarrage des test pour MenuTest");
 	}
-	
-	@Test
 	
 }

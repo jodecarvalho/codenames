@@ -45,7 +45,7 @@ public class Menu {
 		Personne personne = new Personne();
 		System.out.println("Bienvenue sur CodeNames Onlineï¿½");
 		System.out.println("");
-		System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
+		System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
 				+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 		System.out.println("");
 		while (bonChiffre == false) {

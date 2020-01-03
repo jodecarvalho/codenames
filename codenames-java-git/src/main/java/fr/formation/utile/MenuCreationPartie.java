@@ -25,7 +25,7 @@ public class MenuCreationPartie {
 	
 	@Transactional
 	public int setPartie(Personne personne) {
-		System.out.println("Crï¿½ation d'une partie avec votre identifiant");
+		System.out.println("Création d'une partie avec votre identifiant");
 		//IDAOPartie daoPartie = new DAOPartieHibernate();
 				
 		Joueur createurJoueur = new Joueur();
