@@ -43,9 +43,9 @@ public class Menu {
 	public Personne lancementJeu() throws LireChiffreFormatException{
 		boolean bonChiffre = false;
 		Personne personne = new Personne();
-		System.out.println("Bienvenue sur CodeNames Online®");
+		System.out.println("Bienvenue sur CodeNames Onlineï¿½");
 		System.out.println("");
-		System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
+		System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
 				+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 		System.out.println("");
 		while (bonChiffre == false) {
@@ -61,14 +61,14 @@ public class Menu {
 						bonChiffre = true;
 					} 
 					else {
-						System.out.println("Veuillez taper l'un des chiffres proposés.");
-						System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
+						System.out.println("Veuillez taper l'un des chiffres proposï¿½s.");
+						System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
 								+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 					}
 				}
 			}
 			catch(InputMismatchException e) {
-				Application.sc.nextLine(); //Pour suppr la touche entrée du flux
+				Application.sc.nextLine(); //Pour suppr la touche entrï¿½e du flux
 				throw new LireChiffreFormatException();
 			}
 		}
@@ -103,7 +103,7 @@ public class Menu {
 				pseudoLibre = true;
 			} catch (Exception e) {
 				e.getStackTrace();
-				System.out.println("Ce pseudo est déjà pris");
+				System.out.println("Ce pseudo est dï¿½jï¿½ pris");
 				System.out.println("");
 			}
 		}
@@ -126,16 +126,16 @@ public class Menu {
 				while(goodPassword == false) {
 					String password = Application.sc.next();
 					if(password.equals(personne.getPassword())) {
-						System.out.println("Connexion réussie! Bon retour parmis nous!");
+						System.out.println("Connexion rï¿½ussie! Bon retour parmis nous!");
 						goodPassword = true;
 					}
 					else {
-						System.out.println("Mauvais mot de passe, veuillez réessayer.");
+						System.out.println("Mauvais mot de passe, veuillez rï¿½essayer.");
 					}
 				}
 			}
 			else {
-				System.out.println("Ce pseudo n'existe pas, veuillez réessayer");
+				System.out.println("Ce pseudo n'existe pas, veuillez rï¿½essayer");
 			}
 		}
 		return personne;
@@ -146,13 +146,13 @@ public class Menu {
 		boolean bonChiffre = false;
 		//IDAOPartie menu = new DAOPartieHibernate();
 		while(bonChiffre==false) {
-			System.out.println("Vous êtes dans le menu principal de CodeNames Online®");
+			System.out.println("Vous ï¿½tes dans le menu principal de CodeNames Onlineï¿½");
 			System.out.println("");
-			System.out.println("Pour créer une nouvelle partie, tapez 1.");
-			System.out.println("Pour chercher une partie en cours de création, tapez 2.");
+			System.out.println("Pour crï¿½er une nouvelle partie, tapez 1.");
+			System.out.println("Pour chercher une partie en cours de crï¿½ation, tapez 2.");
 			System.out.println("Pour regarder une partie en cours, tapez 3.");
 			System.out.println("Pour afficher votre historique ou celui d'un autre joueur, tapez 4.");
-			System.out.println("Pour vous déconnecter du jeu, tapez 0.");
+			System.out.println("Pour vous dï¿½connecter du jeu, tapez 0.");
 			try {
 					int a = Application.sc.nextInt();
 					if(a == 1) {
@@ -171,7 +171,7 @@ public class Menu {
 								bonChiffre = true;
 							}
 							catch(Exception e) {
-								System.out.println("Aucune partie en cours de création n'a été trouvée.");
+								System.out.println("Aucune partie en cours de crï¿½ation n'a ï¿½tï¿½ trouvï¿½e.");
 								System.out.println("");
 							}
 						}
@@ -180,7 +180,7 @@ public class Menu {
 								try {
 									//menu.spectatePartie();
 									if(menuPartie.findByEtat("enCours") == null) {
-										System.out.println("Aucune partie en cours n'a été trouvée.");
+										System.out.println("Aucune partie en cours n'a ï¿½tï¿½ trouvï¿½e.");
 									}
 									bonChiffre = true;
 								}
@@ -190,14 +190,14 @@ public class Menu {
 								}
 							}
 							else {
-								System.out.println("Veullez saisir un des chiffres proposés dans le menu.");
+								System.out.println("Veullez saisir un des chiffres proposï¿½s dans le menu.");
 								System.out.println("");
 							}
 						}
 					}
 			}
 			catch(InputMismatchException e) {
-				Application.sc.nextLine(); //Pour suppr la touche entrée du flux
+				Application.sc.nextLine(); //Pour suppr la touche entrï¿½e du flux
 				throw new LireChiffreFormatException();
 			}
 		}
@@ -221,9 +221,9 @@ public class Menu {
 //	
 //	public void gameConnection() {
 //		boolean bonChiffre = false;
-//		System.out.println("Bienvenue sur CodeNames Online®");
+//		System.out.println("Bienvenue sur CodeNames Onlineï¿½");
 //		System.out.println("");
-//		System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
+//		System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
 //				+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 //		System.out.println("");
 //		while (bonChiffre == false) {
@@ -241,8 +241,8 @@ public class Menu {
 //						bonChiffre = true;
 //					} 
 //					else {
-//						System.out.println("Veuillez taper l'un des chiffres proposés.");
-//						System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
+//						System.out.println("Veuillez taper l'un des chiffres proposï¿½s.");
+//						System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
 //								+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 //					}
 //				}
@@ -267,7 +267,7 @@ public class Menu {
 //				while (myResult.next()) {
 //					if(myResult.getString("pseudo").equals(pseudo)) {
 //						while(myResult.getString("pseudo").equals(pseudo)) {
-//						System.out.println("Ce pseudo est déjà pris, veuillez saisir un pseudo libre.");
+//						System.out.println("Ce pseudo est dï¿½jï¿½ pris, veuillez saisir un pseudo libre.");
 //						pseudo = Application.sc.next();
 //						}
 //					}
@@ -307,7 +307,7 @@ public class Menu {
 //					while (myResult.next()) {
 //						if(myResult.getString("pseudo").equals(pseudo) 
 //								&& myResult.getString("password").contentEquals(password)) {
-//							System.out.println("Connexion réussie.");
+//							System.out.println("Connexion rï¿½ussie.");
 //							Personne personne = new Personne();
 //							personne.setPseudo(pseudo);
 //							personne.setPassword(password);
