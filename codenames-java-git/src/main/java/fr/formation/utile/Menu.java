@@ -2,9 +2,15 @@ package fr.formation.utile;
 
 import java.util.InputMismatchException;
 
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.IDAOPersonne;
+//import fr.formation.dao.IDAOProduit;
 import fr.formation.dao.exception.NoGameFound;
 import fr.formation.dao.exception.UsernameAlreadyExists;
 import fr.formation.dao.exception.WrongPassword;
@@ -14,8 +20,16 @@ import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 
+@Service
 public class Menu {
-
+	@Autowired
+	private IDAOPersonne menuPersonne;
+	
+	@Autowired
+	private IDAOPartie menuPartie;
+	
+	
+	@Transactional
 	public Personne lancementJeu() throws LireChiffreFormatException{
 		boolean bonChiffre = false;
 		Personne personne = new Personne();
@@ -62,19 +76,23 @@ public class Menu {
 		return personne;
 	}
 	
-	
+	@Transactional
 	private Personne creationPersonne(Personne personne) {
-		IDAOPersonne menu = new DAOPersonneHibernate();
+		//IDAOPersonne menu = new DAOPersonneHibernate();
 		boolean pseudoLibre = false;
 		while(pseudoLibre == false) {
 			System.out.println("Veuillez saisir le pseudo que vous voulez prendre.");
 			String pseudo = Application.sc.next();
+			personne.setPseudo(pseudo);
 			System.out.println("Veuillez saisir votre mot de passe.");
 			String password = Application.sc.next();
+			personne.setPseudo(password);
 			try {
-				personne = menu.inscription(pseudo, password);
+				//personne = menu.inscription(pseudo, password);
+				personne = menuPersonne.save(personne);
 				pseudoLibre = true;
-			} catch (UsernameAlreadyExists e) {
+			} catch (Exception e) {
+				e.getStackTrace();
 				System.out.println("Ce pseudo est déjà pris");
 				System.out.println("");
 			}
@@ -82,8 +100,9 @@ public class Menu {
 		return personne;
 	}
 	
+	@Transactional
 	private Personne reconnexionPersonne(Personne personne) {
-		IDAOPersonne menu = new DAOPersonneHibernate();
+		//IDAOPersonne menu = new DAOPersonneHibernate();
 		boolean personneExist = false;
 		while(personneExist == false) {
 			System.out.println("Veuillez saisir votre pseudo.");
@@ -91,7 +110,9 @@ public class Menu {
 			System.out.println("Veuillez saisir votre mot de passe");
 			String password = Application.sc.next();
 			try {
-				personne = menu.connexion(pseudo, password);
+				//personne = menu.connexion(pseudo, password);
+				personne = menuPersonne.findByLibelle(pseudo);
+				
 				personneExist = true;
 			}
 			catch(WrongPseudo e) {
@@ -106,9 +127,10 @@ public class Menu {
 		return personne;
 	}
 	
+	@Transactional
 	private void mainMenu(Personne personne) throws LireChiffreFormatException{
 		boolean bonChiffre = false;
-		IDAOPartie menu = new DAOPartieHibernate();
+		//IDAOPartie menu = new DAOPartieHibernate();
 		while(bonChiffre==false) {
 			System.out.println("Vous êtes dans le menu principal de CodeNames Online®");
 			System.out.println("");
@@ -128,7 +150,8 @@ public class Menu {
 					else {
 						if(a == 2) {
 							try {
-								menu.rejoindrePartie();
+								//menu.rejoindrePartie();
+								menuPartie.rejoindrePartie();
 								MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
 								rejoindreLaPartie.rejoindrePartie(personne);
 								bonChiffre = true;
@@ -141,7 +164,8 @@ public class Menu {
 						else {
 							if(a==3) {
 								try {
-									menu.spectatePartie();
+									//menu.spectatePartie();
+									menuPartie.spectatePartie();
 									bonChiffre = true;
 								}
 								catch(NoGameFound e) {

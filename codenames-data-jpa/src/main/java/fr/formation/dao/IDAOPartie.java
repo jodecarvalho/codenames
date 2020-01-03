@@ -10,7 +10,7 @@ import fr.formation.model.Partie;
 
 public interface IDAOPartie extends JpaRepository <Partie, Integer>{
 	public List<Partie> findByEtat(String etat);
-	public List<Partie> findByJoueurPersonnePseudo(String pseudo);
+	public List<Partie> findByMesJoueursPersonnePseudo(String pseudo);
 	//public List<Partie> rejoindrePartie() throws NoGameFound; C EST UN FINDBYETAT
 	//public void spectatePartie() throws NoGameFound; C EST UN FINDBYETAT
 	//public Grille afficherGrillePartie(Partie partie); ON VERRA CA PLUS TARD

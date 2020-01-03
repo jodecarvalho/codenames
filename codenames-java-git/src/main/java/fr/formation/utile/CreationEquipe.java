@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Service;
+
 import fr.formation.Application;
 import fr.formation.model.Joueur;
 import fr.formation.model.Personne;
 
+@Service
 public class CreationEquipe extends VariableCreationPartie{
 	
 //	private List<Joueur> joueurs = new ArrayList<Joueur>();
@@ -20,6 +25,7 @@ public class CreationEquipe extends VariableCreationPartie{
 //		this.joueurs = joueurs;
 //	}
 	
+	@Transactional
 	public void setupEquipe(List<Personne> personnes) {
 		for(Personne p : personnes) {
 			this.setCreationJoueur(p);
@@ -27,7 +33,8 @@ public class CreationEquipe extends VariableCreationPartie{
 		this.setCouleurJoueur();
 		this.setRoleJoueur();
 	}
-
+	
+	@Transactional
 	public void setCreationJoueur(Personne personne) {
 		Joueur joueur = new Joueur();
 		joueur.setPersonne(personne);
@@ -35,6 +42,7 @@ public class CreationEquipe extends VariableCreationPartie{
 
 	}
 
+	@Transactional
 	public void setCouleurJoueur() {
 
 		System.out.println("Choisir les équipes");
@@ -86,7 +94,8 @@ public class CreationEquipe extends VariableCreationPartie{
 			}
 		}
 	}
-
+	
+	@Transactional
 	public void setRoleJoueur() {
 		System.out.println("Choisir un rôle (Maitre ou Agent");
 		int compteurMaitreBleu = 0;

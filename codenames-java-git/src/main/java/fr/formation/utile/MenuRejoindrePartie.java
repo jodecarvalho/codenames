@@ -3,6 +3,9 @@ package fr.formation.utile;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.hibernate.DAOPartieHibernate;
@@ -10,15 +13,20 @@ import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 import fr.formation.model.Personne;
 
+@Service
 public class MenuRejoindrePartie {
+	@Autowired
+	private IDAOPartie daoPartie;
+	
 	
 	public void rejoindrePartie(Personne personne) {
 		List<Partie> parties = new ArrayList<Partie>();//Find partie en cours de création
-		IDAOPartie daoPartie = new DAOPartieHibernate();
+		//IDAOPartie daoPartie = new DAOPartieHibernate();
 		int id = 0;
 		
 		try {//Obtient la list des partie que l'on peut rejoindre
-			parties = daoPartie.rejoindrePartie();
+			//parties = daoPartie.rejoindrePartie();
+			parties = daoPartie.findByEtat("enCours");
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("Erreur IDAOPartie.rejoindrePartie()");
