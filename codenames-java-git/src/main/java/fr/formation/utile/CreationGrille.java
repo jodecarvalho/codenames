@@ -14,11 +14,15 @@ import fr.formation.dao.IDAOPartie;
 import fr.formation.model.Carte;
 import fr.formation.model.Grille;
 import fr.formation.model.Mot;
+import fr.formation.model.Partie;
 
 @Service
 public class CreationGrille extends VariableCreationPartie{
 	@Autowired
 	private IDAOMot daoMot;
+	
+	@Autowired
+	private IDAOPartie daoPartie;
 //	private Grille grille = new Grille();
 //	private List<Carte> cartes = new ArrayList<Carte>();
 	
@@ -149,5 +153,21 @@ public class CreationGrille extends VariableCreationPartie{
 			cartes.get(i).setDecouvert(false);
 		}
 	}
+	
+	@Transactional
+	public void saveGrille(int id) {//Sauve la grille dans la partie
+		Partie partie = new Partie();
+		try {
+			partie = daoPartie.findById(id).orElseThrow(Exception::new);
+		}catch(Exception e){
+			System.out.println("ERREUR CreationGrille.saveGrille : n'arrive pas à trouver la partie");
+		}
+		
+		//On sauvegarde dans la partie pour donner une id à la partie
+		partie.getMaGrille().setMesCartes(cartes);
+		daoPartie.save(partie);
+	}
+	
+	
 
 }

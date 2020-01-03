@@ -47,7 +47,7 @@ public class MenuRejoindrePartie {
 					Joueur nouveauJoueur = new Joueur();
 					nouveauJoueur.setPersonne(personne);
 					Partie partie = new Partie();
-					partie = daoPartie.findById(id).orElse(new Partie());
+					partie = daoPartie.findById(id).orElseThrow(Exception::new);
 					List<Joueur> joueurs = new ArrayList<Joueur>();
 					
 					joueurs.addAll(partie.getMesJoueurs());
