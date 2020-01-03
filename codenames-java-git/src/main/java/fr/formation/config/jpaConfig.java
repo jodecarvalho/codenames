@@ -47,7 +47,7 @@ public class jpaConfig {
 		dataSource.setUrl(env.getProperty("sql.url"));
 		dataSource.setUsername(env.getProperty("sql.username"));
 		dataSource.setPassword(env.getProperty("sql.password"));
-		dataSource.setMaxTotal(env.getProperty("sql.password", Integer.class));
+		dataSource.setMaxTotal(env.getProperty("sql.maxTotal", Integer.class));
 		
 		return dataSource;
 	}
