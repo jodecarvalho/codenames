@@ -3,12 +3,13 @@ package fr.formation.utile;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.model.Joueur;
 import fr.formation.model.Partie;
 import fr.formation.model.Personne;
@@ -18,7 +19,7 @@ public class MenuRejoindrePartie {
 	@Autowired
 	private IDAOPartie daoPartie;
 	
-	
+	@Transactional
 	public void rejoindrePartie(Personne personne) {
 		List<Partie> parties = new ArrayList<Partie>();//Find partie en cours de création
 		//IDAOPartie daoPartie = new DAOPartieHibernate();
@@ -46,7 +47,7 @@ public class MenuRejoindrePartie {
 					Joueur nouveauJoueur = new Joueur();
 					nouveauJoueur.setPersonne(personne);
 					Partie partie = new Partie();
-					partie = daoPartie.findById(id);
+					partie = daoPartie.findById(id).orElse(new Partie());
 					List<Joueur> joueurs = new ArrayList<Joueur>();
 					
 					joueurs.addAll(partie.getMesJoueurs());

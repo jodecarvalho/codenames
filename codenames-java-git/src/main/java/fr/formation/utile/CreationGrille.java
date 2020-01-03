@@ -1,12 +1,19 @@
 package fr.formation.utile;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
-import fr.formation.dao.hibernate.DAOMotHibernate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import fr.formation.dao.IDAOMot;
+import fr.formation.dao.IDAOPartie;
 import fr.formation.model.Carte;
 import fr.formation.model.Grille;
+import fr.formation.model.Mot;
 
+@Service
 public class CreationGrille extends VariableCreationPartie{
 	
 //	private Grille grille = new Grille();
@@ -28,6 +35,9 @@ public class CreationGrille extends VariableCreationPartie{
 //		this.cartes = mesCartes;
 //	}
 	
+	@Autowired
+	private IDAOMot daoMot;
+	
 	public void setupGrille() {
 		this.setupListMot();
 		this.setupPositionMot();
@@ -39,9 +49,14 @@ public class CreationGrille extends VariableCreationPartie{
 
 		for (int i = 0; i < 25; i++) {
 			Carte maCarte = new Carte();
-			DAOMotHibernate mot = new DAOMotHibernate();
-			maCarte.getMonMot().setIdRandom();
-			maCarte.setMonMot(mot.findById(maCarte.getMonMot().getId()));
+			//DAOMotHibernate daoMot = new DAOMotHibernate();
+			try {
+				maCarte.getMonMot().setIdRandom();
+				maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
+			}catch(Exception e) {
+				
+			}
+			
 
 			// Vérifie si la carte existe déjà
 			boolean b = true;
@@ -50,11 +65,16 @@ public class CreationGrille extends VariableCreationPartie{
 				for (int j = 0; j < cartes.size(); j++) {
 					String motGrille = cartes.get(j).getMonMot().getMot();
 					String newMot = maCarte.getMonMot().getMot();
-					if (motGrille.equals(newMot)) {
-						maCarte.getMonMot().setIdRandom();
-						maCarte.setMonMot(mot.findById(maCarte.getMonMot().getId()));
-						b = true;
+					try {
+						if (motGrille.equals(newMot)) {
+							maCarte.getMonMot().setIdRandom();
+							maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
+							b = true;
+						}
+					}catch(Exception e) {
+						
 					}
+					
 				}
 			}
 
