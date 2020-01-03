@@ -2,6 +2,8 @@ package fr.formation.utile;
 
 import java.util.InputMismatchException;
 import javax.transaction.Transactional;
+
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +59,7 @@ public class Menu {
 				} 
 				else {
 					if (a == 2) {
-						personne = this.creationPersonne(personne);
+						personne = this.creationPersonne();
 						bonChiffre = true;
 					} 
 					else {
@@ -87,10 +89,11 @@ public class Menu {
 	}
 	
 	@Transactional
-	public Personne creationPersonne(Personne personne) {
-		//IDAOPersonne menu = new DAOPersonneHibernate();
+	public Personne creationPersonne() {
+		Personne resultat = new Personne();
 		boolean pseudoLibre = false;
 		while(pseudoLibre == false) {
+			Personne personne = new Personne();
 			System.out.println("Veuillez saisir le pseudo que vous voulez prendre.");
 			String pseudo = Application.sc.next();
 			personne.setPseudo(pseudo);
@@ -98,17 +101,15 @@ public class Menu {
 			String password = Application.sc.next();
 			personne.setPassword(password);
 			try {
-				//personne = menu.inscription(pseudo, password);
-				personne = menuPersonne.save(personne);
+				menuPersonne.save(personne);
 				pseudoLibre = true;
-				System.out.println(pseudoLibre);
+				resultat = personne;
 			} catch (Exception e) {
-				e.printStackTrace();
-//				System.out.println("Ce pseudo est déjà pris");
-//				System.out.println("");
+				System.out.println("Ce pseudo est déjà pris");
+				System.out.println("");
 			}
 		}
-		return personne;
+		return resultat;
 	}
 	
 	@Transactional
