@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.formation.dao")
 @PropertySource("classpath:data-source.properties")
-public class JpaConfig {
+public class jpaConfig {
 	
 	/*@Bean
 	public BasicDataSource dataSource() {
