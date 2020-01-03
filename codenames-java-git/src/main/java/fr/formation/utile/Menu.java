@@ -43,7 +43,7 @@ public class Menu {
 	public Personne lancementJeu() throws LireChiffreFormatException{
 		boolean bonChiffre = false;
 		Personne personne = new Personne();
-		System.out.println("Bienvenue sur CodeNames Onlineï¿½");
+		System.out.println("Bienvenue sur CodeNames Online");
 		System.out.println("");
 		System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
 				+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
@@ -61,8 +61,8 @@ public class Menu {
 						bonChiffre = true;
 					} 
 					else {
-						System.out.println("Veuillez taper l'un des chiffres proposï¿½s.");
-						System.out.println("Afin de commencer ï¿½ jouer, veuillez soit vous connecter en tapant"
+						System.out.println("Veuillez taper l'un des chiffres proposés.");
+						System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
 								+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
 					}
 				}
@@ -87,7 +87,7 @@ public class Menu {
 	}
 	
 	@Transactional
-	private Personne creationPersonne(Personne personne) {
+	public Personne creationPersonne(Personne personne) {
 		//IDAOPersonne menu = new DAOPersonneHibernate();
 		boolean pseudoLibre = false;
 		while(pseudoLibre == false) {
@@ -96,15 +96,16 @@ public class Menu {
 			personne.setPseudo(pseudo);
 			System.out.println("Veuillez saisir votre mot de passe.");
 			String password = Application.sc.next();
-			personne.setPseudo(password);
+			personne.setPassword(password);
 			try {
 				//personne = menu.inscription(pseudo, password);
 				personne = menuPersonne.save(personne);
 				pseudoLibre = true;
+				System.out.println(pseudoLibre);
 			} catch (Exception e) {
-				e.getStackTrace();
-				System.out.println("Ce pseudo est dï¿½jï¿½ pris");
-				System.out.println("");
+				e.printStackTrace();
+//				System.out.println("Ce pseudo est déjà pris");
+//				System.out.println("");
 			}
 		}
 		return personne;
@@ -126,7 +127,7 @@ public class Menu {
 				while(goodPassword == false) {
 					String password = Application.sc.next();
 					if(password.equals(personne.getPassword())) {
-						System.out.println("Connexion rï¿½ussie! Bon retour parmis nous!");
+						System.out.println("Connexion réussie! Bon retour parmis nous!");
 						goodPassword = true;
 					}
 					else {
@@ -146,13 +147,13 @@ public class Menu {
 		boolean bonChiffre = false;
 		//IDAOPartie menu = new DAOPartieHibernate();
 		while(bonChiffre==false) {
-			System.out.println("Vous ï¿½tes dans le menu principal de CodeNames Onlineï¿½");
+			System.out.println("Vous êtes dans le menu principal de CodeNames Online");
 			System.out.println("");
-			System.out.println("Pour crï¿½er une nouvelle partie, tapez 1.");
-			System.out.println("Pour chercher une partie en cours de crï¿½ation, tapez 2.");
+			System.out.println("Pour créer une nouvelle partie, tapez 1.");
+			System.out.println("Pour chercher une partie en cours de création, tapez 2.");
 			System.out.println("Pour regarder une partie en cours, tapez 3.");
 			System.out.println("Pour afficher votre historique ou celui d'un autre joueur, tapez 4.");
-			System.out.println("Pour vous dï¿½connecter du jeu, tapez 0.");
+			System.out.println("Pour vous déconnecter du jeu, tapez 0.");
 			try {
 					int a = Application.sc.nextInt();
 					if(a == 1) {
@@ -171,7 +172,7 @@ public class Menu {
 								bonChiffre = true;
 							}
 							catch(Exception e) {
-								System.out.println("Aucune partie en cours de crï¿½ation n'a ï¿½tï¿½ trouvï¿½e.");
+								System.out.println("Aucune partie en cours de création n'a été trouvée.");
 								System.out.println("");
 							}
 						}
@@ -180,7 +181,7 @@ public class Menu {
 								try {
 									//menu.spectatePartie();
 									if(menuPartie.findByEtat("enCours") == null) {
-										System.out.println("Aucune partie en cours n'a ï¿½tï¿½ trouvï¿½e.");
+										System.out.println("Aucune partie en cours n'a été trouvée.");
 									}
 									bonChiffre = true;
 								}
@@ -190,7 +191,7 @@ public class Menu {
 								}
 							}
 							else {
-								System.out.println("Veullez saisir un des chiffres proposï¿½s dans le menu.");
+								System.out.println("Veullez saisir un des chiffres proposés dans le menu.");
 								System.out.println("");
 							}
 						}

@@ -8,9 +8,9 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import fr.formation.config.AppConfig;
+import fr.formation.config.JpaConfig;
 import fr.formation.dao.IDAOPersonne;
+import fr.formation.model.Personne;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes= {AppConfig.class})
@@ -23,7 +23,15 @@ public class MenuTest {
 	
 	@BeforeClass
 	public static void beforeClass() {
-		System.out.println("Démarrage des test pour MenuTest");
+		System.out.println("Dï¿½marrage des test pour MenuTest");
 	}
 	
+	@Test
+	public void testInscriptionPersonne() {
+		Personne personne = new Personne();
+		personne.setPseudo("oui");
+		personne.setPseudo("oui");
+		daoPersonne.save(personne);
+		
+	}
 }
