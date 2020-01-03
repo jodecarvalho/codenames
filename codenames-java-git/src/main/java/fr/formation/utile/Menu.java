@@ -1,16 +1,10 @@
 package fr.formation.utile;
 
 import java.util.InputMismatchException;
-
-<<<<<<< Updated upstream
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-=======
 import org.springframework.beans.factory.annotation.Autowired;
->>>>>>> Stashed changes
-
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.IDAOPersonne;
@@ -19,8 +13,8 @@ import fr.formation.dao.exception.NoGameFound;
 import fr.formation.dao.exception.UsernameAlreadyExists;
 import fr.formation.dao.exception.WrongPassword;
 import fr.formation.dao.exception.WrongPseudo;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
-import fr.formation.dao.hibernate.DAOPersonneHibernate;
+//import fr.formation.dao.hibernate.DAOPartieHibernate;
+//import fr.formation.dao.hibernate.DAOPersonneHibernate;
 import fr.formation.exception.LireChiffreFormatException;
 import fr.formation.model.Personne;
 
@@ -104,44 +98,34 @@ public class Menu {
 		return personne;
 	}
 	
-<<<<<<< Updated upstream
 	@Transactional
-	private Personne reconnexionPersonne(Personne personne) {
-		//IDAOPersonne menu = new DAOPersonneHibernate();
-=======
-	private Personne reconnexionPersonne() {
-		
+	private Personne reconnexionPersonne() {	
 		Personne personne = new Personne();
->>>>>>> Stashed changes
 		boolean personneExist = false;
+		boolean goodPassword = false;
 		while(personneExist == false) {
 			System.out.println("Veuillez saisir votre pseudo.");
 			String pseudo = Application.sc.next();
-<<<<<<< Updated upstream
-			System.out.println("Veuillez saisir votre mot de passe");
-			String password = Application.sc.next();
-			try {
-				//personne = menu.connexion(pseudo, password);
-				personne = menuPersonne.findByLibelle(pseudo);
-				
+			if(menuPersonne.findByPseudo(pseudo).isPresent()) {
+				personne = menuPersonne.findByPseudo(pseudo).get();
 				personneExist = true;
+				System.out.println("Veuillez saisir votre mot de passe:");
+				while(goodPassword == false) {
+					String password = Application.sc.next();
+					if(password.equals(personne.getPassword())) {
+						System.out.println("Connexion réussie! Bon retour parmis nous!");
+						goodPassword = true;
+					}
+					else {
+						System.out.println("Mauvais mot de passe, veuillez réessayer.");
+					}
+				}
 			}
-			catch(WrongPseudo e) {
-				System.out.println("Ce pseudo n'existe pas, veuillez réessayer.");
-				System.out.println("");
-			}
-			catch(WrongPassword e) {
-				System.out.println("Mauvais mot de passe, veuillez réessayer.");
-				System.out.println("");
-=======
-			if(menu.findByPseudo(pseudo).isPresent()) {
-				
->>>>>>> Stashed changes
+			else {
+				System.out.println("Ce pseudo n'existe pas, veuillez réessayer");
 			}
 		}
 		return personne;
-		String password = Application.sc.next();
-		System.out.println("Veuillez saisir votre mot de passe");
 	}
 	
 	@Transactional
