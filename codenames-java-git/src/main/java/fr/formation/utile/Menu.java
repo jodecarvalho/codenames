@@ -1,19 +1,16 @@
 package fr.formation.utile;
 
 import java.util.InputMismatchException;
-<<<<<<< Updated upstream
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-=======
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
->>>>>>> Stashed changes
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.dao.IDAOPersonne;
@@ -108,29 +105,16 @@ public class Menu {
 	}
 	
 	@Transactional
-<<<<<<< Updated upstream
 	private Personne reconnexionPersonne() {	
 		Personne personne = new Personne();
-=======
-	private Personne reconnexionPersonne(Personne personne) {
 		//IDAOPersonne menu = new DAOPersonneHibernate();
->>>>>>> Stashed changes
 		boolean personneExist = false;
 		boolean goodPassword = false;
 		while(personneExist == false) {
 			System.out.println("Veuillez saisir votre pseudo.");
 			String pseudo = Application.sc.next();
-<<<<<<< Updated upstream
 			if(menuPersonne.findByPseudo(pseudo).isPresent()) {
 				personne = menuPersonne.findByPseudo(pseudo).get();
-=======
-			System.out.println("Veuillez saisir votre mot de passe");
-			String password = Application.sc.next();
-			try {
-				//personne = menu.connexion(pseudo, password);
-				personne = menuPersonne.findByLibelle(pseudo);
-				
->>>>>>> Stashed changes
 				personneExist = true;
 				System.out.println("Veuillez saisir votre mot de passe:");
 				while(goodPassword == false) {
@@ -175,11 +159,7 @@ public class Menu {
 						if(a == 2) {
 							try {
 								//menu.rejoindrePartie();
-<<<<<<< Updated upstream
 								//menuPartie.rejoindrePartie();
-=======
-								menuPartie.rejoindrePartie();
->>>>>>> Stashed changes
 								MenuRejoindrePartie rejoindreLaPartie = new MenuRejoindrePartie();
 								rejoindreLaPartie.rejoindrePartie(personne);
 								bonChiffre = true;
@@ -193,13 +173,9 @@ public class Menu {
 							if(a==3) {
 								try {
 									//menu.spectatePartie();
-<<<<<<< Updated upstream
 									if(menuPartie.findByEtat("enCours") == null) {
 										System.out.println("Aucune partie en cours n'a été trouvée.");
 									}
-=======
-									menuPartie.spectatePartie();
->>>>>>> Stashed changes
 									bonChiffre = true;
 								}
 								catch(Exception e) {

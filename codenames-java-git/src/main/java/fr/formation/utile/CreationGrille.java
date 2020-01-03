@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,8 @@ import fr.formation.model.Mot;
 
 @Service
 public class CreationGrille extends VariableCreationPartie{
-	
+	@Autowired
+	private IDAOMot daoMot;
 //	private Grille grille = new Grille();
 //	private List<Carte> cartes = new ArrayList<Carte>();
 	
@@ -35,16 +38,16 @@ public class CreationGrille extends VariableCreationPartie{
 //		this.cartes = mesCartes;
 //	}
 	
-	@Autowired
-	private IDAOMot daoMot;
 	
+	@Transactional
 	public void setupGrille() {
 		this.setupListMot();
 		this.setupPositionMot();
 		this.setupCouleurMot();
 		this.setupDecouvertMot();
 	}
-
+	
+	@Transactional
 	public void setupListMot() {
 
 		for (int i = 0; i < 25; i++) {
@@ -82,7 +85,8 @@ public class CreationGrille extends VariableCreationPartie{
 
 		}
 	}
-
+	
+	@Transactional
 	public void setupPositionMot() {
 		for (int i = 0; i < 25; i += 5) {
 			for (int j = 0; j < 5; j++) {
@@ -93,7 +97,8 @@ public class CreationGrille extends VariableCreationPartie{
 			}
 		}
 	}
-
+	
+	@Transactional
 	public void setupCouleurMot() {
 		int r = 9;
 		int b = 8;
@@ -137,7 +142,8 @@ public class CreationGrille extends VariableCreationPartie{
 			}
 		}
 	}
-
+	
+	@Transactional
 	public void setupDecouvertMot() {
 		for (int i = 0; i < 25; i++) {
 			cartes.get(i).setDecouvert(false);

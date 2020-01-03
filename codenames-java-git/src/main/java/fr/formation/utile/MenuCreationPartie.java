@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.Application;
 import fr.formation.dao.IDAOPartie;
-import fr.formation.dao.hibernate.DAOPartieHibernate;
+//import fr.formation.dao.hibernate.DAOPartieHibernate;
 import fr.formation.dao.IDAOPersonne;
 import fr.formation.model.Grille;
 import fr.formation.model.Joueur;
