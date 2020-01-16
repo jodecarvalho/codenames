@@ -78,11 +78,13 @@ public class CreationEquipe extends VariableCreationPartie {
 					joueur.setCouleur("Bleu");
 					System.out.println(joueur.getPersonne().getPseudo() + " a la couleur " + joueur.getCouleur());
 					compteurBleu++;
+					daoJoueur.save(joueur);//Le joueur a déjà l'ID de la partie donc on n'est pas obliger d'utiliser IDAOPartie
 					break;
 				} else if (a == 2) {
 					joueur.setCouleur("Rouge");
 					System.out.println(joueur.getPersonne().getPseudo() + " a la couleur " + joueur.getCouleur());
 					compteurRouge++;
+					daoJoueur.save(joueur);//Le joueur a déjà l'ID de la partie donc on n'est pas obliger d'utiliser IDAOPartie
 					break;
 				} else if (a == 0) {
 					compteurBleu = 5;// Pour sortir de la boucle
@@ -100,53 +102,9 @@ public class CreationEquipe extends VariableCreationPartie {
 			}
 		}
 
-		//Le joueur a déjà l'ID de la partie donc on n'est pas obliger d'utiliser IDAOPartie
-		daoJoueur.save(joueur);
+		
 
-//		while (compteurBleu < 2 || compteurRouge < 2) {
-////			if(compteurBleu < 2 || compteurRouge < 2) {
-////				compteurBleu = 0;
-////				compteurRouge = 0;
-////			}			
-//			
-//			for (int i = 0; i<joueurs.size();i++) {
-//				
-//				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre couleur");
-//				System.out.println("Taper 1 pour bleu, 2 pour rouge");
-//
-//				boolean b = true;
-//
-//				while (b) {
-//					try {
-//						int a = Application.sc.nextInt();
-//
-//						if (a == 1) {
-//							joueurs.get(i).setCouleur("Bleu");
-//							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
-//							compteurBleu++;
-//							b = false;
-//						} else if (a == 2) {
-//							this.joueurs.get(i).setCouleur("Rouge");
-//							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
-//							compteurRouge++;
-//							b = false;
-//						}else if(a == 0) {
-//							compteurBleu = 5;//Pour sortir de la première boucle
-//							compteurRouge = 5;
-//							break;
-//						} else {
-//							System.out.println("Veuillez taper l'un des chiffres proposés.");
-//							System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
-//									+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
-//						}
-//
-//					} catch (InputMismatchException e) {
-//						Application.sc.nextLine(); // Pour suppr la touche entrée du flux
-//						System.out.println("On a dit un nombre !");
-//					}
-//				}
-//			}
-//		}
+
 	}
 
 	@Transactional
@@ -201,58 +159,104 @@ public class CreationEquipe extends VariableCreationPartie {
 				System.out.println("On a dit un nombre !");
 			}
 		}
-		
-
-//		do {
-//			compteurMaitreBleu = 0;
-//			compteurMaitreRouge = 0;
-//
-//			for (int i = 0; i < joueurs.size(); i++) {
-//				System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre rôle");
-//				System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrêter");
-//
-//				boolean b = true;
-//				while (b) {
-//					try {
-//						int a = Application.sc.nextInt();
-//
-//						if (a == 1) {
-//							joueurs.get(i).setRole("Maitre");
-//							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur "
-//									+ joueurs.get(i).getCouleur());
-//							if (joueurs.get(i).getCouleur().equals("Bleu")) {
-//								compteurMaitreBleu++;
-//								System.out.println("compteurMaitreBleu = " + compteurMaitreBleu);
-//							} else if (joueurs.get(i).getCouleur().equals("Rouge")) {
-//								compteurMaitreRouge++;
-//								System.out.println("compteurMaitreRouge = " + compteurMaitreRouge);
-//							} else {
-//								System.out.println("Le joueur n'a pas de couleur !?");
-//							}
-//							b = false;
-//						} else if (a == 2) {
-//							joueurs.get(i).setRole("Agent");
-//							System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur "
-//									+ joueurs.get(i).getCouleur());
-//							b = false;
-//						} else if (a == 0) {
-//							compteurMaitreBleu = 0;// Pour sortir de la première boucle
-//							compteurMaitreRouge = 0;
-//							b = false;
-//						} else {
-//							System.out.println(
-//									"Personne " + joueurs.get(i).getPersonne().getPseudo() + "choissé votre rôle");
-//							System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrête");
-//						}
-//
-//					} catch (InputMismatchException e) {
-//						Application.sc.nextLine(); // Pour suppr la touche entrée du flux
-//						System.out.println("On a dit un nombre !");
-//					}
-//				}
-//			}
-//		} while (compteurMaitreBleu > 1 || compteurMaitreRouge > 1);
-
 	}
 
 }
+
+
+//while (compteurBleu < 2 || compteurRouge < 2) {
+////if(compteurBleu < 2 || compteurRouge < 2) {
+////compteurBleu = 0;
+////compteurRouge = 0;
+////}			
+//
+//for (int i = 0; i<joueurs.size();i++) {
+//
+//System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre couleur");
+//System.out.println("Taper 1 pour bleu, 2 pour rouge");
+//
+//boolean b = true;
+//
+//while (b) {
+//	try {
+//		int a = Application.sc.nextInt();
+//
+//		if (a == 1) {
+//			joueurs.get(i).setCouleur("Bleu");
+//			System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
+//			compteurBleu++;
+//			b = false;
+//		} else if (a == 2) {
+//			this.joueurs.get(i).setCouleur("Rouge");
+//			System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur " + joueurs.get(i).getCouleur());
+//			compteurRouge++;
+//			b = false;
+//		}else if(a == 0) {
+//			compteurBleu = 5;//Pour sortir de la première boucle
+//			compteurRouge = 5;
+//			break;
+//		} else {
+//			System.out.println("Veuillez taper l'un des chiffres proposés.");
+//			System.out.println("Afin de commencer à jouer, veuillez soit vous connecter en tapant"
+//					+ "le chiffre 1, soit vous inscrire en tapant le chiffre 2.");
+//		}
+//
+//	} catch (InputMismatchException e) {
+//		Application.sc.nextLine(); // Pour suppr la touche entrée du flux
+//		System.out.println("On a dit un nombre !");
+//	}
+//}
+//}
+//}
+
+
+
+//do {
+//compteurMaitreBleu = 0;
+//compteurMaitreRouge = 0;
+//
+//for (int i = 0; i < joueurs.size(); i++) {
+//	System.out.println("Personne " + joueurs.get(i).getPersonne().getPseudo() + " choisissez votre rôle");
+//	System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrêter");
+//
+//	boolean b = true;
+//	while (b) {
+//		try {
+//			int a = Application.sc.nextInt();
+//
+//			if (a == 1) {
+//				joueurs.get(i).setRole("Maitre");
+//				System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur "
+//						+ joueurs.get(i).getCouleur());
+//				if (joueurs.get(i).getCouleur().equals("Bleu")) {
+//					compteurMaitreBleu++;
+//					System.out.println("compteurMaitreBleu = " + compteurMaitreBleu);
+//				} else if (joueurs.get(i).getCouleur().equals("Rouge")) {
+//					compteurMaitreRouge++;
+//					System.out.println("compteurMaitreRouge = " + compteurMaitreRouge);
+//				} else {
+//					System.out.println("Le joueur n'a pas de couleur !?");
+//				}
+//				b = false;
+//			} else if (a == 2) {
+//				joueurs.get(i).setRole("Agent");
+//				System.out.println(joueurs.get(i).getPersonne().getPseudo() + " a la couleur "
+//						+ joueurs.get(i).getCouleur());
+//				b = false;
+//			} else if (a == 0) {
+//				compteurMaitreBleu = 0;// Pour sortir de la première boucle
+//				compteurMaitreRouge = 0;
+//				b = false;
+//			} else {
+//				System.out.println(
+//						"Personne " + joueurs.get(i).getPersonne().getPseudo() + "choissé votre rôle");
+//				System.out.println("Taper 1 pour Maitre, 2 pour Agent, 0 pour arrête");
+//			}
+//
+//		} catch (InputMismatchException e) {
+//			Application.sc.nextLine(); // Pour suppr la touche entrée du flux
+//			System.out.println("On a dit un nombre !");
+//		}
+//	}
+//}
+//} while (compteurMaitreBleu > 1 || compteurMaitreRouge > 1);

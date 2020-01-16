@@ -51,7 +51,7 @@ public class MenuCreationPartie {
 				int a = Application.sc.nextInt();
 				if(a == 0) {
 					Partie partie = new Partie();
-					partie = daoPartie.findById(id).orElseThrow(InputMismatchException::new);//Arevoir quoi mettre dans le orElse
+					partie = daoPartie.findById(id).orElseThrow(InputMismatchException::new);
 					partie.setEtat("enCours");
 					daoPartie.save(partie);
 					break;
@@ -62,8 +62,6 @@ public class MenuCreationPartie {
 				System.out.println("ERREUR MenuCreationPartie.attenteJoueurs()");
 			}
 		}
-		
-		
 	}
 
 }

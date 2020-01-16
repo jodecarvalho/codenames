@@ -80,6 +80,7 @@ public class CreationPartie extends VariableCreationPartie{
 		int compteurMaitreBleu = 0;
 		int compteurMaitreRouge = 0;
 		
+		//partie.countByMesJoueursCouleur("Bleu");
 		
 		for(Joueur j : partie.getMesJoueurs()) {
 			if(j.getCouleur().equals("Bleu")) {
