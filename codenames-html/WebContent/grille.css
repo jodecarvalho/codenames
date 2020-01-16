@@ -1,0 +1,79 @@
+.grille {
+	width: 1050px;
+	background: orange;
+	border-radius: 10px;
+}
+
+.carte {
+	width: 200px;
+	height: 120px;
+	margin: 5px;
+	background: beige;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.mot {
+	width: 200px;
+	height: 50px;
+	background: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+}
+
+.texte{
+	position: absolute;
+	bottom: 0;
+}
+
+.gone {
+	display:none;
+}
+
+.rouge{
+	width: 200px;
+	height: 120px;
+	margin: 5px;
+	background: url("johnny_rouge.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.bleue{
+	width: 200px;
+	height: 120px;
+	margin: 5px;
+	background: url("johnny_bleu.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.blanche{
+	width: 200px;
+	height: 120px;
+	margin: 5px;
+	background: url("temoin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.noire{
+	width: 200px;
+	height: 120px;
+	margin: 5px;
+	background: url("carte_assassin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
