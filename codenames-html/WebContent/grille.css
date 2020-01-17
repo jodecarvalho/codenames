@@ -23,6 +23,7 @@
 	position: absolute;
 	bottom: 0;
 	text-align: center;
+	pointer-events: none;
 }
 
 .texte{
@@ -30,7 +31,17 @@
 	bottom: 0;
 }
 
+/* permet de cacher la partie ayant cette classe */
 .gone {
+	display:none;
+}
+
+/* permet de cacher le borddereau de haut de page de l'équipe rouge ou bleue */
+.goneEquipeRouge{
+	display:none;
+}
+
+.goneEquipeBleue{
 	display:none;
 }
 
@@ -76,4 +87,9 @@
 	border-radius: 10px;
 	display: inline-block;
 	position: relative;
+}
+
+.debut{
+	width: 1050px;
+	text-align: center;
 }

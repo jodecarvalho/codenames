@@ -18,7 +18,23 @@
 </head>
 
 <body>
+	<header class = "debut" >
+		<h1>Bienvenue dans cette nouvelle partie de CodeJohnny Online!</h1>
+		<h2>Prenez le temps de lire chaque mot, puit appuyez sur "Prêt!"</h2>
+	</header>
+	<div class = "goneEquipeRouge">
+		<h2>C'est au tour de l'équipe rouge!</h2>
+	</div>
+	<div class = "goneEquipeBleue">
+		<h2>C'est au tour de l'équipe bleue!</h2>
+	</div>
 	<div class = "grille" >
+	</div>
+	<div class = "boutonPret">
+		<input type="button" value="Prêt!" onclick = "lancementPartie()"/>
+	</div>
+	<div class = "gone">
+		<input type="button" value="Fin du Tour" onclick = "finDuTour()"/>
 	</div>
 	<footer>Copyright Codenames Online &copy;</footer>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
