@@ -109,5 +109,10 @@ function finDuTour(){
 	rouge = !rouge;
 }
 
+function deroulementTour(){
+	
+}
+
+
 creerGrille();
 click();
