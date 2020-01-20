@@ -32,15 +32,27 @@ function click(){
 				mot.classList.add("gone");
 				event.target.classList.remove("carte");
 				if(event.target.getAttribute("data-couleur") == "blanche"){
+					finDuTour();
+					alert("Vous êtes tombés sur un témoin, c'est au tour de l'équipe adverse");
 					event.target.classList.add("blanche");
 				}
 				if(event.target.getAttribute("data-couleur") == "rouge"){
+					if(rouge == false){
+						finDuTour();
+						alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+					}
 					event.target.classList.add("rouge");
 				}
 				if(event.target.getAttribute("data-couleur") == "bleue"){
+					if(rouge == true){
+						finDuTour();
+						alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+					}
 					event.target.classList.add("bleue");
 				}
 				if(event.target.getAttribute("data-couleur") == "noire"){
+					finDuTour();
+					alert("Salut mon pote, c'est Game Over");
 					event.target.classList.add("noire");
 				}
 			}
