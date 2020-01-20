@@ -1,0 +1,81 @@
+@charset "ISO-8859-1";
+
+body{
+	background-image: url(../images/flamme-accueil.jpg);
+}
+
+/*main{*/
+ /* width: 600px;*//*cette déclaration impose une largeur de 600 pixels pour le main.*/
+ /* margin: 20px auto;*//*Ici on a deux valeurs pour la propriété. Lorsqu'on utilise deux valeurs sur une propriété comme margin ou padding, la première valeur est utilisée pour le haut et le bas de l'élément (dans ce cas : 20px) et la seconde valeur est utilisée pour les côtés gauche et droit (la valeur auto qu'on utilise ici est une valeur spéciale qui divise l'espace horizontal disponible en parts égales entre la gauche et la droite. Il est aussi possible d'utiliser une, trois ou quatre valeurs, pour plus d'informations, voir cet article qui explique comment cela fonctionne.*/
+/*  background-color: black;*/
+/*  padding: 0px 20px 20px 20px;*//*ici on a quatre valeurs pour le padding afin de créer un peu d'espace autour du contenu. On a 20 pixels à gauche, en bas et à droite. Dans l'ordre, les valeurs correspondent au haut, à la droite, au bas et à la gauche.*/
+ /* border: 5px solid white;*//*cette déclaration permet d'utiliser une bordure pleine, large de 5 pixels pour entourer tout le corps de la page.*/
+/*}*/
+
+
+fieldset{
+	width: 600px;
+	margin: 20px auto;
+	background-color: black;
+	padding: 0px 20px 20px 20px;
+	border: solid white;
+}
+
+legend{
+	font-size: 50px;
+	color: white;
+}
+
+a{
+	margin: 0px auto;
+}
+
+h1, h2{
+  margin: 0;
+  padding: 20px 0px;/*ajoute 20 pixels de padding en haut et en bas du titre*/
+  text-align: center; 
+  color: white;
+  text-shadow: 3px 3px 1px black;
+}
+
+
+img {
+  display: block;/*img est un bloc inline donc pour pouvoir appliquer des marges sur l'image comme pour un bloc, on utilise display: block; pour que l'image se comporte comme un élément de bloc*/
+  margin: 0 auto;/*Ici on a deux valeurs pour la propriété. Lorsqu'on utilise deux valeurs sur une propriété comme margin ou padding, la première valeur est utilisée pour le haut et le bas de l'élément (dans ce cas : 0) et la seconde valeur est utilisée pour les côtés gauche et droit (la valeur auto qu'on utilise ici est une valeur spéciale qui divise l'espace horizontal disponible en parts égales entre la gauche et la droite. Il est aussi possible d'utiliser une, trois ou quatre valeurs, pour plus d'informations, voir cet article qui explique comment cela fonctionne.*/
+}
+
+p{
+	color: white;
+	text-align: center;
+  	border: 1px solid black;
+}
+
+a.btn{
+	display: block;/*a est un inline on le change en block pour mettre sur une seul ligne*/
+	margin: 20px 50px;
+	padding: 5px 20px;
+	text-align: center;
+}
+
+input.btn{
+	display: block;/*a est un inline on le change en block pour mettre sur une seul ligne*/
+	margin: 20px 50px;
+	padding: 5px 20px;
+	text-align: center;
+}
+
+div.input{
+	padding: 20px 0px;
+	text-align: center;
+}
+
+div input{
+	padding: 5px 130px;
+	text-align: center;
+}
+
+
+::placeholder {
+  color: var(--c, black)
+}
+
