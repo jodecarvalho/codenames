@@ -21,6 +21,12 @@
 			<version>1.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>fr.formation</groupId>
+			<artifactId>codenames-java-git</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
