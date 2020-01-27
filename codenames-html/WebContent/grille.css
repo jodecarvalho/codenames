@@ -1,13 +1,19 @@
 .grille {
-	width: 1050px;
-	background: orange;
+	width: 794px;
+/* 	background: orange; */
 	border-radius: 10px;
+	display:block;
+	margin-left: auto;
+    margin-right: auto;
+/*     border-width: 2px;
+ 	border-style:groove;
+ 	border-color:white;  */
 }
 
 .carte {
-	width: 200px;
-	height: 120px;
-	margin: 5px;
+	width: 150px;
+	height: 90px;
+	margin: 4px;
 	background: beige;
 	border-radius: 10px;
 	display: inline-block;
@@ -15,8 +21,8 @@
 }
 
 .mot {
-	width: 200px;
-	height: 50px;
+	width: 150px;
+	height: 40px;
 	background: white;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -91,5 +97,42 @@
 
 .debut{
 	width: 1050px;
+	display: block;
 	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border-width: 8px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+body {
+	background-color:white;
+	background-image:url("images/fond_plateau.jpeg");
+}
+
+.boutonPret{
+	background-color:white;
+	font-weight:bold;
+	color:black;
+	border-radius: 5px;
+	border-width:3px;
+ 	border-style:outset;
+ 	border-color:white;
+
+}
+
+.boutonPret:hover{
+	background-image:url("images/LEFEU.gif");
+	background-size: 100%;
+	color:transparent;
+	
+}
+
+.grosJohnny{
+	background-color:white;
+	background-image:url("images/ecranLancement.jpg");
+	width: 1608px;
+	height: 708px;
 }
