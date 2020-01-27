@@ -125,6 +125,13 @@ function deroulementTour(){
 	
 }
 
+function allumerLeFeu(){
+	let souris = document.querySelector(".boutonPret");
+	souris.addEventListener('mouseenter', e =>{
+		document.querySelector("#audioPlayer").play();
+	})
+}
 
 creerGrille();
 click();
+allumerLeFeu();
