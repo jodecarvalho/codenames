@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -24,11 +25,13 @@ public class Personne{
 	@Column(name="PSEUDO_PERSONNE",length = 50, nullable = false, unique = true)
 	@NotEmpty
 	@Size(max = 50)
+	@NotBlank(message="Le nom est obligatoire")//Pour les erreurs du web servlet personneController
 	private String pseudo;
 	
 	@Column(name="PASSWORD_PERSONNE",length = 100, nullable = false)
 	@NotEmpty
 	@Size(max = 50)
+	@NotBlank(message="Le nom est obligatoire")//Pour les erreurs du web servlet personneController
 	private String password;
 	
 	@OneToMany(mappedBy = "personne")

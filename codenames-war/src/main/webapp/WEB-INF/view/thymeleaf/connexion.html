@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
+<head>
+<title>Connexion</title>
+</head>
+<body>
+	<main>
+		<form class="connect " method="POST">
+			<fieldset>
+				<legend>Connectez-vous</legend>
+
+				<h1>Que je t'aime !</h1>
+				<div class="input">
+					<input type="text" name="speudo" placeholder="Saisir votre speudo" />
+				</div>
+				<div class="input">
+					<input type="text" name="password"
+						placeholder="Saisir votre mot de passe" />
+				</div>
+
+				<div>
+					<a type="submit" class="connect btn btn-dark"
+						th:href="@{http://localhost:8080/codenames-war/home}"
+						role="button" name="connexion">Connexion</a>
+				</div>
+				<div>
+					<a class="btn btn-dark"
+						th:href="@{http://localhost:8080/codenames-war/accueil}"
+						role="button" name="accueil">Accueil</a>
+				</div>
+
+			</fieldset>
+		</form>
+	</main>
+</body>
+</html>

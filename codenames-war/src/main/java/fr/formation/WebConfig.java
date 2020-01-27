@@ -1,4 +1,4 @@
-package controller;
+package fr.formation;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

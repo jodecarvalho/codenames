@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
+<head>
+<title>Home</title>
+</head>>
+<body>
+	<header>
+		<h1>Bonjour [[${session.pseudo}]]</h1>
+	</header>
+		
+	<main>
+		
+		
+	<aside>
+		<table>
+			<tr th:each="partie : ${parties}">
+				<a th:href="@{http://localhost:8080/emusic-war2/home(id=${partie.id})}" role="button"> Partie [[${patie.id}]]</a>
+			</tr>
+		</table>
+	</aside>
+	</main>
+	
+
+</body>
+</html>

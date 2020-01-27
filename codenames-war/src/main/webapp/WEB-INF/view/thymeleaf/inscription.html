@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
+<head>
+<title>Inscription</title>
+</head>
+<body>
+	<main>
+	<form class="inscription" method="POST">
+		<fieldset>
+		<legend>Inscrivez-vous</legend>
+		
+		<h1>Allumer le feu !</h1>
+		<div class="input">
+			<input type="text" name="speudo" placeholder="Saisir votre speudo" />
+		</div>
+		<div class="input">
+			<input type="text" name="password"
+				placeholder="Saisir votre mot de passe" />
+		</div>
+		<div class="input">
+			<input type="text" name="vpassword"
+				placeholder="Valider votre mot de passe" />
+		</div>
+
+		<a class="inscription btn btn-dark" th:href="@{http://localhost:8080/codenames-war/connexion}" role="button"
+			name="inscription">Inscription</a>
+			<a class="btn btn-dark"
+			th:href="@{http://localhost:8080/codenames-war/accueil}" role="button" name="accueil">Accueil</a>
+		</fieldset>
+	</form>
+	
+	</main>
+
+</body>
+</html>

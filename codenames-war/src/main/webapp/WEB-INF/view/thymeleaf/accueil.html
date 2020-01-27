@@ -5,6 +5,22 @@
 <title>Accueil</title>
 </head>
 <body>
+	<main>
 
+		<h1>Bienvenue sur CodeJohnny Online &copy;</h1>
+		<img style="width: 300px; height: 150px;"
+		src="./images/johnny-accueil.jpg" alt="Mon image d'accueil">
+		
+		<div>
+			<p>Afin de commencer à jouer, veuillez soit vous connecter ou vous inscrire</p>
+		</div>
+		<div>
+			<a class="btn btn-dark" th:href="@{http://localhost:8080/codenames-war/connexion}" role="button" name="connexion">Connectez-vous !</a>
+		</div>
+		<div>
+			<a class="btn btn-dark"	th:href="@{http://localhost:8080/codenames-war/inscription}" role="button" name="inscription">Inscrivez-vous !</a>
+		</div>
+		
+	</main>
 </body>
 </html>
