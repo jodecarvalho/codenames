@@ -18,35 +18,38 @@
 </head>
 
 <body>
-	<header class = "debut" >
-		<h1>Bienvenue dans cette nouvelle partie de CodeJohnny Online!</h1>
-		<h2>Prenez le temps de lire chaque mot, puis appuyez sur "Prêt!"</h2>
-	</header>
-	<div class = "goneEquipeRouge">
-		<h2>C'est au tour de l'équipe rouge!</h2>
+	<div>
+		<header class = "debut" >
+			<h1>Bienvenue dans cette nouvelle partie de CodeJohnny Online!</h1>
+			<h2>Prenez le temps de lire chaque mot, puis appuyez sur <input class = boutonPret type="button" value="Prêt!" onclick = "lancementPartie()"/></h2>
+		</header>
+		<div class = "goneEquipeRouge">
+			<h2>C'est au tour de l'équipe rouge!</h2>
+		</div>
+		<div class = "goneEquipeBleue">
+			<h2>C'est au tour de l'équipe bleue!</h2>
+		</div>
+		<div class = "grille" >
+		</div>
+		<div class = "gone">
+			<input type="button" value="Fin du Tour" onclick = "finDuTour()"/>
+		</div>
+		<footer>Copyright Codenames Online &copy;</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
+		<audio id="audioPlayer">
+	 		<source src="sons/ALLUMERLEFEU.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
 	</div>
-	<div class = "goneEquipeBleue">
-		<h2>C'est au tour de l'équipe bleue!</h2>
-	</div>
-	<div class = "grille" >
-	</div>
-	<div class = "boutonPret">
-		<input type="button" value="Prêt!" onclick = "lancementPartie()"/>
-	</div>
-	<div class = "gone">
-		<input type="button" value="Fin du Tour" onclick = "finDuTour()"/>
-	</div>
-	<footer>Copyright Codenames Online &copy;</footer>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
 </body>
 </html>
