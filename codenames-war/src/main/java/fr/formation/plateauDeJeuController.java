@@ -11,7 +11,7 @@ public class plateauDeJeuController {
 		return "plateauDeJeu";
 	}
 	
-	@GetMapping("/AgentRouge")
+	@GetMapping("/agentRouge")
 	public String plateauAgentRougeGET() {
 		return "plateauAgentRouge";
 	}
