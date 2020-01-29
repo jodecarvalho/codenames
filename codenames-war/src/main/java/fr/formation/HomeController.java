@@ -22,19 +22,20 @@ public class HomeController {
 	public String accueil(Model model, HttpSession session) {
 		Personne personne = (Personne) session.getAttribute("personne");
 		
-//		List<Partie> parties = daoPartie.findByMesJoueursPersonnePseudo(personne.getPseudo());
-//		
-//		if(parties.size() == 0)
-//		{
-//			String lesParties = "Les parties PAS OK";
-//			model.addAttribute("lesParties", lesParties );
-//		}
-//		else {
-//			String lesParties = "Les parties OK";
-//			model.addAttribute("lesParties", lesParties );		
-//		}
-//		
-//		model.addAttribute("partie", parties);
+		List<Partie> parties = daoPartie.findByMesJoueursPersonnePseudo(personne.getPseudo());
+		
+		if(parties.size() == 0)
+		{
+			String lesParties = "Les parties PAS OK";
+			model.addAttribute("lesParties", lesParties );
+		}
+		else {
+			String lesParties = "Les parties OK";
+			model.addAttribute("lesParties", lesParties );		
+		}
+		
+		model.addAttribute("partie", parties);
+		
 		return "home";
 	}
 
