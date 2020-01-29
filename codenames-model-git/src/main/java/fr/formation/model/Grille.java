@@ -1,6 +1,7 @@
 package fr.formation.model;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import fr.formation.model.Views.PartieFetchingGrille;
+
 
 @Entity 
 @Table(name = "grille")
@@ -19,13 +24,16 @@ public class Grille {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID_GRILLE")
+	@JsonView(Views.Common.class)
 	private int id;
 
-	@OneToMany(mappedBy = "grille")
+	@OneToMany(mappedBy = "grille", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JsonView({Views.Grille.class, Views.CarteFetchingGrille.class})
 	private List<Carte> mesCartes = null;
 	
 	@OneToOne
 	@JoinColumn(name = "ID_PARTIE_GRILLE")
+	@JsonView({Views.Grille.class, Views.PartieFetchingGrille.class})
 	private Partie partie;
 	// private Carte maGrille[][] = new Carte[5][5];
 	// private Carte maCarte = null;

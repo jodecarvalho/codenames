@@ -27,17 +27,23 @@ public class MenuCreationPartie {
 	public int setPartie(Personne personne) {
 		System.out.println("Création d'une partie avec votre identifiant");
 		//IDAOPartie daoPartie = new DAOPartieHibernate();
-				
+		
 		Joueur createurJoueur = new Joueur();
-		createurJoueur.setPersonne(personne);
+		createurJoueur.setPersonne(personne);//Besoin le metter à cause des join column
+		
 
-		Partie partie = new Partie();
-		Partie partieSave = new Partie();
-		List<Joueur> joueurs = new ArrayList<Joueur>();
+		List<Joueur> joueurs = new ArrayList<Joueur>();//Voir si il faut laisser ou pas
 		joueurs.add(createurJoueur);
+		
+		
+		Partie partie = new Partie();
 		partie.setMesJoueurs(joueurs);
 		partie.setEtat("creation");
-		partieSave = daoPartie.save(partie);
+		Partie partieSave = new Partie();
+		partieSave = daoPartie.save(partie);//On créer une nouvelle partie et on la récupère
+		
+		createurJoueur.setPartie(partieSave);
+		partieSave = daoPartie.save(partie);//on sauvegarde les modifs
 		return partieSave.getId();
 	}
 	

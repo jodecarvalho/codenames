@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity 
 @Table(name = "joueur")
 public class Joueur {
@@ -18,22 +20,27 @@ public class Joueur {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID_JOUEUR")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="COULEUR_JOUEUR",length = 10, nullable = true)
 	@Size(max = 10)
+	@JsonView(Views.Joueur.class)
 	private String couleur;
 	
 	@Column(name="ROLE_JOUEUR",length = 50, nullable = true)
 	@Size(max = 50)
+	@JsonView(Views.Joueur.class)
 	private String role;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_PERSONNE_JOUEUR")
+	@JsonView({Views.Joueur.class, Views.PersonneFetchingJoueur.class})// PersonneFetchingJoueur extends Personne => Les attributs de personne sont envoyé dans Joueur
 	private Personne personne;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_PARTIE_JOUEUR")
+	@JsonView({Views.Joueur.class, Views.PartieFetchingJoueur.class})
 	private Partie partie;
 	
 	public int getId() {

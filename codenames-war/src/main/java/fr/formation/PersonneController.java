@@ -37,7 +37,13 @@ public class PersonneController {
 		// Condition if pour vérifier si speudo et password existe dans la base de
 		// données => voir plus tard
 		
-		session.setAttribute("pseudo", personne.getPseudo());
+		try {
+			Personne vPersonne= daoPersonne.findByPseudo(personne.getPseudo()).orElseThrow(Exception::new);
+			session.setAttribute("personne", vPersonne);
+		}catch(Exception e) {
+			
+		}
+		
 		return "redirect:/home";
 	}
 
@@ -55,14 +61,23 @@ public class PersonneController {
 			return "inscription";
 		}
 		
-		//Vérifier si le speudo existe déjà
+		daoPersonne.save(personne);
+		
 		try {
-			daoPersonne.save(personne);
-			session.setAttribute("pseudo", personne.getPseudo());
-			return "redirect:/home";
+			Personne vPersonne= daoPersonne.findByPseudo(personne.getPseudo()).orElseThrow(Exception::new);
+			session.setAttribute("personne", vPersonne);
 		}catch(Exception e) {
-			return "inscription";
+			
 		}
+		
+		return "redirect:/home";
+		
+		//Vérifier si le speudo existe déjà
+//		try {
+//			
+//		}catch(Exception e) {
+//			return "inscription";
+//		}
 	}
 
 }

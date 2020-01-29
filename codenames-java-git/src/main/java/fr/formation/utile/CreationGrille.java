@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.formation.dao.IDAOGrille;
 import fr.formation.dao.IDAOMot;
 import fr.formation.dao.IDAOPartie;
 import fr.formation.model.Carte;
@@ -23,6 +24,9 @@ public class CreationGrille extends VariableCreationPartie{
 	
 	@Autowired
 	private IDAOPartie daoPartie;
+	
+	@Autowired
+	private IDAOGrille daoGrille;
 //	private Grille grille = new Grille();
 //	private List<Carte> cartes = new ArrayList<Carte>();
 	
@@ -58,10 +62,12 @@ public class CreationGrille extends VariableCreationPartie{
 			Carte maCarte = new Carte();
 			//DAOMotHibernate daoMot = new DAOMotHibernate();
 			try {
-				maCarte.getMonMot().setIdRandom();
-				maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
-			}catch(Exception e) {
+				//maCarte.getMonMot().setIdRandom();
+				//maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
+				maCarte.setMonMot(daoMot.findById((int) (Math.random() * 698)).orElseThrow(Exception::new));
 				
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
 			
 
@@ -74,12 +80,13 @@ public class CreationGrille extends VariableCreationPartie{
 					String newMot = maCarte.getMonMot().getMot();
 					try {
 						if (motGrille.equals(newMot)) {
-							maCarte.getMonMot().setIdRandom();
-							maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
+//							maCarte.getMonMot().setIdRandom();
+//							maCarte.setMonMot(daoMot.findById(maCarte.getMonMot().getId()).orElseThrow(Exception::new));
+							maCarte.setMonMot(daoMot.findById((int) (Math.random() * 698)).orElseThrow(Exception::new));
 							b = true;
 						}
 					}catch(Exception e) {
-						
+						e.printStackTrace();
 					}
 					
 				}
@@ -163,9 +170,19 @@ public class CreationGrille extends VariableCreationPartie{
 			System.out.println("ERREUR CreationGrille.saveGrille : n'arrive pas à trouver la partie");
 		}
 		
+		Grille grille = new Grille();
+		grille.setMesCartes(cartes);
+//		daoGrille.save(grille);
+		grille.setPartie(partie);
+		
+		for (Carte c : cartes) {
+			c.setGrille(grille);
+		}
+		
 		//On sauvegarde dans la partie pour donner une id à la partie
-		partie.getMaGrille().setMesCartes(cartes);
-		daoPartie.save(partie);
+		daoGrille.save(grille);
+		
+
 	}
 	
 	

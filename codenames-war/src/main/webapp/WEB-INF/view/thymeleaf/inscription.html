@@ -12,21 +12,22 @@
 		
 		<h1>Allumer le feu !</h1>
 		<div class="input">
-			<input type="text" name="speudo" placeholder="Saisir votre speudo" />
+			<input type="text" name="pseudo" placeholder="Saisir votre speudo" />
 		</div>
 		<div class="input">
 			<input type="text" name="password"
 				placeholder="Saisir votre mot de passe" />
 		</div>
-		<div class="input">
-			<input type="text" name="vpassword"
-				placeholder="Valider votre mot de passe" />
+		
+		<div>
+			<input type="submit" class="btn btn-dark" role="button" name="inscription" value="Inscription">
 		</div>
-
-		<a class="inscription btn btn-dark" th:href="@{http://localhost:8080/codenames-war/connexion}" role="button"
-			name="inscription">Inscription</a>
-			<a class="btn btn-dark"
-			th:href="@{http://localhost:8080/codenames-war/accueil}" role="button" name="accueil">Accueil</a>
+		
+		<div>
+			<a class="btn btn-dark"	th:href="@{http://localhost:8080/codenames-war/accueil}" role="button" name="accueil">Accueil</a>
+		</div>
+			
+			
 		</fieldset>
 	</form>
 	

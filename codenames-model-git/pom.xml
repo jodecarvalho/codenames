@@ -1,26 +1,36 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>fr.formation</groupId>
-  <artifactId>codenames-model-git</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <properties>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
-  
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>fr.formation</groupId>
+	<artifactId>codenames-model-git</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
-  	<dependency>
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-entitymanager</artifactId>
-    	<version>5.3.3.Final</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.hibernate.validator</groupId>
-	    <artifactId>hibernate-validator</artifactId>
-	    <version>6.1.0.Final</version>
-	</dependency>
-  </dependencies>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.3.3.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.0.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<!-- Pourt PartieRestController -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+	</dependencies>
 
 </project>

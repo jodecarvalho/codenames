@@ -3,21 +3,21 @@
 	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
 <head>
 <title>Home</title>
-</head>>
+</head>
 <body>
 	<header>
-		<h1>Bonjour [[${session.pseudo}]]</h1>
+		<h1>Bonjour [[${session.personne.pseudo}]]</h1>
 	</header>
 		
 	<main>
+		<h1>Main (temporaire)</h1>
 		
+		<a class="btn btn-black" th:href="@{creationpartie(idPersonne=${session.personne.id})}" role="button"> Creer une partie</a>
+	
 		
 	<aside>
-		<table>
-			<tr th:each="partie : ${parties}">
-				<a th:href="@{http://localhost:8080/emusic-war2/home(id=${partie.id})}" role="button"> Partie [[${patie.id}]]</a>
-			</tr>
-		</table>
+		<h1>Aside (temporaire)</h1>
+		<h1>[[${lesParties}]]</h1>
 	</aside>
 	</main>
 	

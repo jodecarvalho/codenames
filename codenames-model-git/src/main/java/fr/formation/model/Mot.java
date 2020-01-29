@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity 
 @Table(name = "mot")
 public class Mot {
@@ -17,14 +20,17 @@ public class Mot {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID_MOT")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@Column(name="LIBELLE_MOT",length = 100, nullable = false)
 	@NotEmpty
 	@Size(max = 50)
+	@JsonView(Views.Mot.class)//mot est un attribut de Mot
 	private String mot;
 	
 	@OneToOne(mappedBy = "monMot")
+	@JsonView(Views.MotFetchingCarte.class)//MotFetchingCarte extends Mot => Carte est un attribut de Mot
 	private Carte carte;
 
 	public int getId() {

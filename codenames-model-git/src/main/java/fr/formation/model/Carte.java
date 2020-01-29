@@ -1,5 +1,6 @@
 package fr.formation.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity 
 @Table(name = "carte")
 public class Carte {
@@ -19,30 +22,37 @@ public class Carte {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "ID_CARTE")
+	@JsonView(Views.Common.class)
 	private int id;
 	
 	@OneToOne
 	@JoinColumn(name = "ID_MOT_CARTE")
-	private Mot monMot = new Mot();
+	@JsonView({Views.Carte.class, Views.MotFetchingCarte.class})//MotFetchingCarte extends Mot => Les attribut de Mot sont renvoyé dans Carte
+	private Mot monMot;
 	
 	@Column(name="COULEUR_CARTE",length = 100, nullable = false)
 	@NotEmpty
 	@Size(max = 50)
+	@JsonView(Views.Carte.class)
 	private String couleur;
 	
 	@Column(name = "POSITION_X_CARTE", nullable = false)
-	@NotEmpty
+//	@NotEmpty
+	@JsonView(Views.Carte.class)
 	private int pos_x;
 	
 	@Column(name = "POSITION_Y_CARTE", nullable = false)
-	@NotEmpty
+//	@NotEmpty
+	@JsonView(Views.Carte.class)
 	private int pos_y;
 	
 	@Column(name = "DECOUVERT")
+	@JsonView(Views.Carte.class)
 	private boolean decouvert;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_GRILLE_CARTE")
+	@JsonView({Views.Carte.class, Views.GrilleFetchingCarte.class})
 	private Grille grille;
 	
 //	public void setupMot() {
