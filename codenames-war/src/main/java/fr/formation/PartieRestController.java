@@ -1,5 +1,6 @@
 package fr.formation;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,10 @@ public class PartieRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.Partie.class)
 	public Partie findByIdGET(@PathVariable int id) {
-		return this.daoPartie.findById(id).get();
+		Partie p = daoPartie.findById(id).get();
+		
+		Hibernate.initialize(p.getMesJoueurs());
+		
+		return p;
 	}
 }
