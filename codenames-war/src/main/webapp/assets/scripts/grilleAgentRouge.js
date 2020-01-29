@@ -3,6 +3,7 @@ let compteurRouge = 0;
 let compteurBleu = 0;
 let compteurBlanc = 0;
 let compteurNoir = 0;
+let rouge = false;
 
 function creerGrille(){
 	//créer 25 div allant se mettre dans la grille, le compteur remplace le libelle du mot pour l'instant
@@ -29,54 +30,57 @@ function creerGrille(){
 }
 
 function click(){
+	
 	let monClick = document.querySelectorAll("[data-couleur]");
 	
 	//lorsque l'on clique sur une carte, la couleur est révélée et cache l'entièreté de la case
 	monClick.forEach((lien) =>{
 		lien.addEventListener('click', function(event) {
-			if(event.target.classList == "carte"){
-				let texte = event.target.querySelector(".texte");
-				texte.classList.remove("texte");
-				texte.classList.add("gone");
-				let mot = event.target.querySelector(".mot");
-				mot.classList.remove("mot");
-				mot.classList.add("gone");
-				event.target.classList.remove("carte");
-				if(event.target.getAttribute("data-couleur") == "blanche"){
-					finDuTour();
-					alert("Vous êtes tombés sur un témoin, c'est au tour de l'équipe adverse");
-					event.target.classList.add("blanche");
-					compteurBlanc --;
-					document.querySelector(".compteurBlanc").innerHTML = compteurBlanc;
-					
-				}
-				if(event.target.getAttribute("data-couleur") == "rouge"){
-					//Cette boucle if permet de vérifier si l'équipe tombée sur la case est bleue,
-					//si c'est le cas, le tour est fini
-					//On retrouve la même boucle pour le cas de la case bleue sélectionnée par l'équipe rouge
-					if(rouge == false){
+			if(rouge == true){
+				if(event.target.classList == "carte"){
+					let texte = event.target.querySelector(".texte");
+					texte.classList.remove("texte");
+					texte.classList.add("gone");
+					let mot = event.target.querySelector(".mot");
+					mot.classList.remove("mot");
+					mot.classList.add("gone");
+					event.target.classList.remove("carte");
+					if(event.target.getAttribute("data-couleur") == "blanche"){
 						finDuTour();
-						alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+						alert("Vous êtes tombés sur un témoin, c'est au tour de l'équipe adverse");
+						event.target.classList.add("blanche");
+						compteurBlanc --;
+						document.querySelector(".compteurBlanc").innerHTML = compteurBlanc;
+						
 					}
-					event.target.classList.add("rouge");
-					compteurRouge --;
-					document.querySelector(".compteurRouge").innerHTML = compteurRouge;
-				}
-				if(event.target.getAttribute("data-couleur") == "bleue"){
-					if(rouge == true){
+					if(event.target.getAttribute("data-couleur") == "rouge"){
+						//Cette boucle if permet de vérifier si l'équipe tombée sur la case est bleue,
+						//si c'est le cas, le tour est fini
+						//On retrouve la même boucle pour le cas de la case bleue sélectionnée par l'équipe rouge
+						if(rouge == false){
+							finDuTour();
+							alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+						}
+						event.target.classList.add("rouge");
+						compteurRouge --;
+						document.querySelector(".compteurRouge").innerHTML = compteurRouge;
+					}
+					if(event.target.getAttribute("data-couleur") == "bleue"){
+						if(rouge == true){
+							finDuTour();
+							alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+						}
+						event.target.classList.add("bleue");
+						compteurBleu --;
+						document.querySelector(".compteurBleu").innerHTML = compteurBleu;
+					}
+					if(event.target.getAttribute("data-couleur") == "noire"){
 						finDuTour();
-						alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+						alert("Salut mon pote, c'est Game Over");
+						event.target.classList.add("noire");
+						compteurNoir --;
+						document.querySelector(".compteurNoir").innerHTML = compteurNoir;
 					}
-					event.target.classList.add("bleue");
-					compteurBleu --;
-					document.querySelector(".compteurBleu").innerHTML = compteurBleu;
-				}
-				if(event.target.getAttribute("data-couleur") == "noire"){
-					finDuTour();
-					alert("Salut mon pote, c'est Game Over");
-					event.target.classList.add("noire");
-					compteurNoir --;
-					document.querySelector(".compteurNoir").innerHTML = compteurNoir;
 				}
 			}
 		});
@@ -124,9 +128,22 @@ function lancementPartie(){
 	equipeRouge.classList.remove("goneEquipeRouge");
 	equipeRouge.classList.add("equipeRouge");
 	document.querySelector("#grille").classList.add("grilleRouge");
+	rouge = true;
+	click();
 }
 
-let rouge = true;
+//function deroulementTour(){
+//	while (true){
+//		if(rouge == true){
+//			click();
+//		}
+//		if(compteurRouge == 0 || compteurBleu == 0 || compteurNoir == 0){
+//			break;
+//		}
+//	}
+//	alert("la partie est finie")
+//}
+
 function finDuTour(){
 	if (rouge == true){
 		let equipeRouge = document.querySelector(".equipeRouge");
@@ -159,7 +176,4 @@ function allumerLeFeu(){
 
 creerGrille();
 
-if(rouge != true){
-	click();
-}
 //allumerLeFeu();
