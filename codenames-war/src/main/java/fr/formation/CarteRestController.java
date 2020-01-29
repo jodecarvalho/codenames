@@ -32,14 +32,20 @@ public class CarteRestController {
 	@Autowired
 	private IDAOGrille daoGrille;
 	
+	@GetMapping
+	@JsonView(Views.Carte.class)
+	public List<Carte> findAll(){
+		return this.daoCarte.findAll();
+	}
+	
 	@GetMapping("/{id}")
 	@JsonView(Views.Carte.class)
 	public List<Carte> findByIdGET(@PathVariable int id) {
-		List<Carte> cartes = daoCarte.findAllByIdPartie(id);
+//		List<Carte> cartes = daoCarte.findAllByIdPartie(id);
 		
-//		Partie partie = daoPartie.findById(id).get();
-//		Grille grille = daoGrille.findByPartie(partie);
-//		List<Carte> cartes = daoCarte.findAllByGrille(grille);
+		Partie partie = daoPartie.findById(id).get();
+		Grille grille = daoGrille.findByPartie(partie);
+		List<Carte> cartes = daoCarte.findAllByGrille(grille);
 		
 //		for(Carte c : cartes){
 //			Hibernate.initialize(c.getMonMot());
