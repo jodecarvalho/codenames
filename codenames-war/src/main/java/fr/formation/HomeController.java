@@ -22,7 +22,8 @@ public class HomeController {
 	public String accueil(Model model, HttpSession session) {
 		Personne personne = (Personne) session.getAttribute("personne");
 		
-		List<Partie> parties = daoPartie.findByMesJoueursPersonnePseudo(personne.getPseudo());
+		List<Partie> parties = daoPartie.findByJoueursPersonnePseudo(personne.getPseudo());
+		
 		
 		if(parties.size() == 0)
 		{

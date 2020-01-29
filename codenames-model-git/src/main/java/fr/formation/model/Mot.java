@@ -26,7 +26,7 @@ public class Mot {
 	@Column(name="LIBELLE_MOT",length = 100, nullable = false)
 	@NotEmpty
 	@Size(max = 50)
-	@JsonView(Views.Mot.class)//mot est un attribut de Mot
+	@JsonView({Views.Mot.class, Views.Carte.class})//mot est un attribut de Mot
 	private String mot;
 	
 	@OneToOne(mappedBy = "monMot")

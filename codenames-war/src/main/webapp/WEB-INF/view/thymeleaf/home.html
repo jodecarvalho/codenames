@@ -8,19 +8,24 @@
 	<header>
 		<h1>Bonjour [[${session.personne.pseudo}]]</h1>
 	</header>
-		
+
 	<main>
 		<h1>Main (temporaire)</h1>
-		
-		<a class="btn btn-black" th:href="@{creationpartie(idPersonne=${session.personne.id})}" role="button"> Creer une partie</a>
-	
-		
-	<aside>
-		<h1>Aside (temporaire)</h1>
-		<h1>[[${lesParties}]]</h1>
-	</aside>
+
+		<a class="btn btn-black"
+			th:href="@{creationpartie(idPersonne=${session.personne.id})}"
+			role="button"> Creer une partie</a>
+
+		<aside>
+			<h1>Aside (temporaire)</h1>
+			<table>
+				<tr th:each="partie : ${parties}">
+					<p>Partie [[partie.id]]</p>
+				</tr>
+			</table>
+		</aside>
 	</main>
-	
+
 
 </body>
 </html>

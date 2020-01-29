@@ -23,35 +23,28 @@ import fr.formation.model.Partie;
 @ContextConfiguration(classes= {AppConfig.class})
 @Transactional
 @Rollback(true)
-public class IDAOCarteTest {
-
-	@Autowired(required = false)
-	private IDAOCarte daoCarte;
+public class IDAOPartieTest {
+	
 	@Autowired(required = false)
 	private IDAOPartie daoPartie;
-	@Autowired(required = false)
-	private IDAOGrille daoGrille;
 	
 	@BeforeClass
 	public static void beforeClass() {
-		System.out.println("Démarrage des test pour IDAOCarteTest");
+		System.out.println("Démarrage des test pour IDAOPartieTest");
 	}
 	
 	@Test
-	public void testFindAllByIdPartie() {
+	public void testFindByJoueursPersonnePseudo() {
 		try {
-			List<Carte> cartes = daoCarte.findAllByIdPartie(1);
+			List<Partie> parties = daoPartie.findByJoueursPersonnePseudo("oui");
 			
-//			Partie partie = daoPartie.findById(1).get();
-//			Grille grille = daoGrille.findByPartie(partie);
-//			List<Carte> cartes = daoCarte.findAllByGrille(grille);
-			
-			assertEquals(25, cartes.size());
-			
+			assertEquals(1, parties.size());
 		}
 		catch(Exception e){
 			System.out.println("ERREUR");
 			fail(e.getMessage());
 		}
 	}
+
+
 }

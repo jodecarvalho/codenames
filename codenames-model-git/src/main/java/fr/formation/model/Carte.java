@@ -27,7 +27,7 @@ public class Carte {
 	
 	@OneToOne
 	@JoinColumn(name = "ID_MOT_CARTE")
-	@JsonView({Views.Carte.class, Views.MotFetchingCarte.class})//MotFetchingCarte extends Mot => Les attribut de Mot sont renvoyé dans Carte
+	@JsonView({Views.Carte.class, Views.MotFetchingCarte.class})
 	private Mot monMot;
 	
 	@Column(name="COULEUR_CARTE",length = 100, nullable = false)

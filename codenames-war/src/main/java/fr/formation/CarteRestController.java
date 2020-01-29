@@ -40,16 +40,13 @@ public class CarteRestController {
 	
 	@GetMapping("/{id}")
 	@JsonView(Views.Carte.class)
+	@Transactional
 	public List<Carte> findByIdGET(@PathVariable int id) {
-//		List<Carte> cartes = daoCarte.findAllByIdPartie(id);
+		List<Carte> cartes = daoCarte.findAllByIdPartie(id);
 		
-		Partie partie = daoPartie.findById(id).get();
-		Grille grille = daoGrille.findByPartie(partie);
-		List<Carte> cartes = daoCarte.findAllByGrille(grille);
-		
-//		for(Carte c : cartes){
-//			Hibernate.initialize(c.getMonMot());
-//		}
+		for(Carte c : cartes){
+			Hibernate.initialize(c.getMonMot());
+		}
 
 		return cartes;
 	}

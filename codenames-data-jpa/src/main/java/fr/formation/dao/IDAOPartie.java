@@ -3,6 +3,8 @@ package fr.formation.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import fr.formation.dao.exception.NoGameFound;
 import fr.formation.model.Grille;
@@ -14,8 +16,8 @@ public interface IDAOPartie extends JpaRepository <Partie, Integer>{
 	public List<Partie> findByMesJoueursPersonneId(int id);
 	public int countByMesJoueursCouleur(String couleur);
 	
-//	@Query("select p from Partie p left join fetch p.mesJoueurs j inner join fetch j.personne where p.pseudo = :pseudo")
-//	public List<Partie> findByJoueursPersonnePseudo(String pseudo);
+	@Query("select p from Partie p inner join fetch p.mesJoueurs j where j.personne.pseudo = :pseudo")
+	public List<Partie> findByJoueursPersonnePseudo(@Param("pseudo") String pseudo);
 	
 //	@(select p from Partie pa left join fetch pa.joueurs j  )
 //	public List<Partie> findPartiesByIdPersonne(int id);
