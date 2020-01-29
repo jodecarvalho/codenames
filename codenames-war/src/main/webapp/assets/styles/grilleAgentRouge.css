@@ -1,0 +1,280 @@
+#grille {
+	width: 806px;
+	border-radius: 10px;
+	display:block;
+    position: absolute;
+    left: calc(50% - 397px);
+	top: 200px;
+/*     border-width: 2px;
+ 	border-style:groove;
+ 	border-color:white;  */
+}
+
+.grilleGrise{
+	border-width: 8px;
+ 	border-style:groove;
+ 	border-color:grey;
+}
+
+.grilleRouge{
+	border-width: 8px;
+ 	border-style:groove;
+ 	border-color:yellow;
+}
+
+.grilleBleue{
+	border-width: 8px;
+ 	border-style:groove;
+ 	border-color:grey;
+}
+
+.carte {
+	width: 150px;
+	height: 90px;
+	margin: 4px;
+	background: beige;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.mot {
+	width: 150px;
+	height: 40px;
+	background: white;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	pointer-events: none;
+}
+
+.texte{
+	position: absolute;
+	bottom: 0;
+}
+
+/* permet de cacher la partie ayant cette classe */
+.gone {
+	display:none;
+}
+
+/* permet de cacher le borddereau de haut de page de l'équipe rouge ou bleue */
+.goneEquipeRouge{
+	display:none;
+}
+
+.goneEquipeBleue{
+	display:none;
+}
+
+.rouge{
+	width: 150px;
+	height: 90px;
+	margin: 4px;
+	background: url("images/johnny_rouge.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.bleue{
+	width: 150px;
+	height: 90px;
+	margin: 4px;
+	background: url("images/johnny_bleu.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.blanche{
+	width: 150px;
+	height: 90px;
+	margin: 4px;
+	background: url("images/temoin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.noire{
+	width: 150px;
+	height: 90px;
+	margin: 4px;
+	background: url("images/carte_assassin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: relative;
+}
+
+.debut{
+	width: 1050px;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    color: white;
+    border-width: 8px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+body {
+	background-color:white;
+	background-image:url("images/fond_plateau.jpeg");
+}
+
+.boutonPret{
+	background-color:white;
+	font-weight:bold;
+	color:black;
+	border-radius: 5px;
+	border-width:3px;
+ 	border-style:outset;
+ 	border-color:white;
+
+}
+
+.boutonPret:hover{
+	background-image:url("images/LEFEU.gif");
+	background-size: 100%;
+	color:transparent;
+	
+}
+
+.grosJohnny{
+	background-color:white;
+	background-image:url("view/images/ecranLancement.jpg");
+	width: 1608px;
+	height: 708px;
+}
+
+.equipeRouge{
+	width: 1050px;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-image:url("images/red.jpg");
+    background-size: 100%;
+    border-width: 8px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.equipeBleue{
+	width: 1050px;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-image:url("images/blue.jpg");
+    background-size: 100%;
+    border-width: 8px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.imageCompteurRouge{
+	width: 150px;
+	height: 90px;
+	background: url("images/johnny_rouge.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: absolute;
+	top: 250px;
+	left: 90px;
+	border-width: 4px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.imageCompteurBleue{
+	width: 150px;
+	height: 90px;
+	background: url("images/johnny_bleu.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: absolute;
+	top: 500px;
+	left: 90px;
+	border-width: 4px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.imageCompteurBlanche{
+	width: 150px;
+	height: 90px;
+	background: url("images/temoin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: absolute;
+	top: 250px;
+	right: 90px;
+	border-width: 4px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.imageCompteurNoire{
+	width: 150px;
+	height: 90px;
+	background: url("images/carte_assassin.jpg");
+	background-size: 100%;
+	border-radius: 10px;
+	display: inline-block;
+	position: absolute;
+	top: 500px;
+	right: 90px;
+	border-width: 4px;
+ 	border-style:groove;
+ 	border-color:white;
+}
+
+.compteurRouge{
+	position: absolute;
+	top: 255px;
+	left: 280px;
+	color: white;
+	font-size: 48px;
+	font-weight: bold;
+}
+
+.compteurBleu{
+	position: absolute;
+	top: 505px;
+	left: 280px;
+	color: white;
+	font-size: 48px;
+	font-weight: bold;
+}
+
+.compteurBlanc{
+	position: absolute;
+	top: 255px;
+	right: 280px;
+	color: white;
+	font-size: 48px;
+	font-weight: bold;
+}
+
+.compteurNoir{
+	position: absolute;
+	top: 505px;
+	right: 280px;
+	color: white;
+	font-size: 48px;
+	font-weight: bold;
+}
