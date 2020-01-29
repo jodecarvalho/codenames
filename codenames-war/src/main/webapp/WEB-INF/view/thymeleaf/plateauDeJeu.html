@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Partie en cours</title>
+<meta name="description"
+	content="Le bô jeu c'est par ici" />
+<meta charset="UTF-8" />
+<base href="/codenames-war/" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous" />
+<link rel="stylesheet" type="text/css" href="assets/styles/grille.css" />
+<meta name="viewport" content="width=devide-width, initial-scale=1" />
+
+<script defer src="assets/scripts/grille.js"></script>
+</head>
+
+<body>
+	<div>
+		<header class = "debut" >
+			<h1>Bienvenue dans cette nouvelle partie de CodeJohnny Online!</h1>
+			<h2>Prenez le temps de lire chaque mot, puis appuyez sur <input class = boutonPret type="button" value="Prêt!" onclick = "lancementPartie()"/></h2>
+		</header>
+		<div class = "goneEquipeRouge">
+			<h1>C'est au tour de l'équipe rouge!</h1>
+			<h2>Maître espion, annoncez votre mot ainsi que le nombre de noms de code concernés</h2>
+		</div>
+		<div class = "goneEquipeBleue">
+			<h1>C'est au tour de l'équipe bleue!</h1>
+			<h2>Maître espion, annoncez votre mot ainsi que le nombre de noms de code concernés</h2>
+		</div>
+		<div class = "compteurGauche">
+			<span class = "imageCompteurRouge"></span>
+			<span class = "compteurRouge"></span>
+			<span class = "imageCompteurBleue"></span>
+			<span class = "compteurBleu"></span>
+		</div>
+		<div class = "compteurDroit">
+			<span class = "compteurBlanc"></span>
+			<span class = "imageCompteurBlanche"></span>
+			<span class = "compteurNoir"></span>
+			<span class = "imageCompteurNoire"></span>
+		<div id = "grille" >
+		</div>
+		<div class = "gone">
+			<input type="button" value="Fin du Tour" onclick = "finDuTour()"/>
+		</div>
+		<footer>Copyright Codenames Online &copy;</footer>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+			crossorigin="anonymous"></script>
+		<audio id="audioPlayer">
+	 		<source src="view/sons/ALLUMERLEFEU.mp3" type="audio/mpeg">
+			Your browser does not support the audio element.
+		</audio>
+	</div>
+</body>
+</html>
