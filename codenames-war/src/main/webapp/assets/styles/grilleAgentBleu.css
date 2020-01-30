@@ -278,3 +278,20 @@ body {
 	font-size: 48px;
 	font-weight: bold;
 }
+
+.preparation{
+	position: absolute;
+	top: 380px;
+	left: calc(50% - 397px);
+	color: white;
+	font-size: 48px;
+	font-weight: bold;
+}
+
+/* .compteurJoueursPasPret{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: white;
+	font-size: 48px;
+} */

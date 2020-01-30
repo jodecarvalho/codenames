@@ -3,7 +3,10 @@ let compteurRouge = 0;
 let compteurBleu = 0;
 let compteurBlanc = 0;
 let compteurNoir = 0;
+let compteurJoueursPasPret = 1;
 let rouge = false;
+
+document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
 
 function creerGrille(){
 
@@ -134,14 +137,13 @@ function lancementPartie(){
 	let equipeRouge = document.querySelector(".goneEquipeRouge")
 	let boutonTemporaire = document.querySelector(".gone");
 	let boutonPret = document.querySelector(".boutonPret");
-	let msgDebut = document.querySelector(".debut");
-	msgDebut.classList.remove("debut");
-	msgDebut.classList.add("gone");
 	boutonPret.classList.remove("boutonPret");
 	boutonPret.classList.add("gone");
 	equipeRouge.classList.remove("goneEquipeRouge");
 	equipeRouge.classList.add("equipeRouge");
 	document.querySelector("#grille").classList.add("grilleRouge");
+	document.querySelector(".preparation").classList.add("gone");
+	document.querySelector(".preparation").classList.remove("preparation");
 	rouge = true;
 	click();
 }
@@ -188,6 +190,17 @@ function allumerLeFeu(){
 	})
 }
 
-creerGrille();
+let eventSource = new EventSource('http://localhost:8080/codenames-war/api/plateauDeJeu/sse');
+eventSource.addEventListener('message', (event) => {
+
+	alert(event.data);
+	compteurJoueursPasPret --;
+	document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
+	if(compteurJoueursPasPret == 0){
+		creerGrille();
+		lancementPartie();
+	}
+});
+
 
 //allumerLeFeu();

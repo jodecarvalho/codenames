@@ -188,6 +188,24 @@ function allumerLeFeu(){
 	})
 }
 
+const pret = async (event) => {
+	event.preventDefault();
+	
+	let joueurPret = {
+			ready: 1
+	}
+	let ping = await fetch('http://localhost:8080/codenames-war/api/plateauDeJeu', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(joueurPret)
+	}).then(resp => resp.json());	
+}
+
+document.querySelector('.boutonPret')
+	.addEventListener('click', pret);
+
 creerGrille();
 
 //allumerLeFeu();
