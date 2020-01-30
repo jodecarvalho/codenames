@@ -15,4 +15,9 @@ public class plateauDeJeuController {
 	public String plateauAgentRougeGET() {
 		return "plateauAgentRouge";
 	}
+	
+	@GetMapping("/agentBleu")
+	public String plateauAgentBleuGET() {
+		return "plateauAgentBleu";
+	}
 }

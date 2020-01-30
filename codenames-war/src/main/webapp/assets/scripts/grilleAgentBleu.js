@@ -50,7 +50,7 @@ function click(){
 	//lorsque l'on clique sur une carte, la couleur est révélée et cache l'entièreté de la case
 	monClick.forEach((lien) =>{
 		lien.addEventListener('click', function(event) {
-			if(rouge == true){
+			if(rouge == false){
 				if(event.target.classList == "carte"){
 					let texte = event.target.querySelector(".texte");
 					texte.classList.remove("texte");
