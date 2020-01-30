@@ -19,23 +19,12 @@ public class HomeController {
 	private IDAOPartie daoPartie;
 	
 	@GetMapping("/home")
-	public String accueil(Model model, HttpSession session) {
+	public String homeGET(Model model, HttpSession session) {
 		Personne personne = (Personne) session.getAttribute("personne");
 		
 		List<Partie> parties = daoPartie.findByJoueursPersonnePseudo(personne.getPseudo());
 		
-		
-		if(parties.size() == 0)
-		{
-			String lesParties = "Les parties PAS OK";
-			model.addAttribute("lesParties", lesParties );
-		}
-		else {
-			String lesParties = "Les parties OK";
-			model.addAttribute("lesParties", lesParties );		
-		}
-		
-		model.addAttribute("partie", parties);
+		model.addAttribute("parties", parties);
 		
 		return "home";
 	}

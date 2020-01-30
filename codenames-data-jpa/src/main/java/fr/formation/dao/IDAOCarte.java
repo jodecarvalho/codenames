@@ -14,7 +14,7 @@ public interface IDAOCarte extends JpaRepository<Carte, Integer> {
 	public List<Carte> findAllByGrille(Grille grille);
 	
 	//@Query("select c from Carte c inner join fetch Grille g where g.partie.id = :id")//Puisqu'il y a un seul mot dans la classe pas besoin inner join fetch Mot m
-	@Query("select c from Carte c where c.grille.partie.id = :id")
+	@Query("select c from Carte c left join fetch c.monMot m where c.grille.partie.id = :id")
 	public List<Carte> findAllByIdPartie(@Param("id") int id);
 
 }

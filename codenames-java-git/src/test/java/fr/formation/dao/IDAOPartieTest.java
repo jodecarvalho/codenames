@@ -38,7 +38,11 @@ public class IDAOPartieTest {
 		try {
 			List<Partie> parties = daoPartie.findByJoueursPersonnePseudo("oui");
 			
-			assertEquals(1, parties.size());
+			for(Partie p : parties) {
+				System.out.println(p.getId());
+			}
+			
+			assertEquals(2, parties.size());
 		}
 		catch(Exception e){
 			System.out.println("ERREUR");

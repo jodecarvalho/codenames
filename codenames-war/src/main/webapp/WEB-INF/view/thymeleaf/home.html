@@ -15,12 +15,21 @@
 		<a class="btn btn-black"
 			th:href="@{creationpartie(idPersonne=${session.personne.id})}"
 			role="button"> Creer une partie</a>
+			
+		<table>
+			
+		</table>
 
 		<aside>
 			<h1>Aside (temporaire)</h1>
+			<select name="partie" id="partie-select">
+			 	<option>Partie jouer</option>
+			 	<option>Partie en cours</option>
+			 	<option>Partie a rejoindre</option>
+			</select>
 			<table>
 				<tr th:each="partie : ${parties}">
-					<p>Partie [[partie.id]]</p>
+					<button type="button" class="btn btn-dark" name="${partie.id}">Partie [[${partie.id}]]</button>
 				</tr>
 			</table>
 		</aside>
