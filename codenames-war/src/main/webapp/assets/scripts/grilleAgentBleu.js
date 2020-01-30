@@ -3,7 +3,7 @@ let compteurRouge = 0;
 let compteurBleu = 0;
 let compteurBlanc = 0;
 let compteurNoir = 0;
-let compteurJoueursPasPret = 1;
+let compteurJoueursPasPret = 2;
 let rouge = false;
 
 document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
@@ -190,6 +190,29 @@ function allumerLeFeu(){
 	})
 }
 
+const pret = async (event) => {
+	event.preventDefault();
+	let msgDebut = document.querySelector(".debut");
+	let msgJoueurPret = document.querySelector(".joueurPretGone");
+	msgDebut.classList.remove("debut");
+	msgDebut.classList.add("gone");
+	msgJoueurPret.classList.add("joueurPret");
+	msgJoueurPret.classList.remove("joueurPretGone");
+	let joueurPret = {
+			ready: 1
+	}
+	let ping = await fetch('http://localhost:8080/codenames-war/api/plateauDeJeu', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(joueurPret)
+	}).then(resp => resp.json());	
+}
+
+document.querySelector('.boutonPret')
+	.addEventListener('click', pret);
+
 let eventSource = new EventSource('http://localhost:8080/codenames-war/api/plateauDeJeu/sse');
 eventSource.addEventListener('message', (event) => {
 
@@ -197,6 +220,9 @@ eventSource.addEventListener('message', (event) => {
 	compteurJoueursPasPret --;
 	document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
 	if(compteurJoueursPasPret == 0){
+		let msgJoueurPret = document.querySelector(".joueurPret");
+		msgJoueurPret.classList.add("joueurPretGone");
+		msgJoueurPret.classList.remove("joueurPret");
 		creerGrille();
 		lancementPartie();
 	}

@@ -288,10 +288,20 @@ body {
 	font-weight: bold;
 }
 
-/* .compteurJoueursPasPret{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	color: white;
-	font-size: 48px;
-} */
+.joueurPretGone{
+	display: none;
+}
+
+.joueurPret{
+	width: 1050px;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-image:url("images/blue.jpg");
+    background-size: 100%;
+    border-width: 8px;
+ 	border-style:groove;
+ 	border-color:white;
+}

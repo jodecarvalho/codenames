@@ -3,7 +3,10 @@ let compteurRouge = 0;
 let compteurBleu = 0;
 let compteurBlanc = 0;
 let compteurNoir = 0;
+let compteurJoueursPasPret = 2;
 let rouge = false;
+
+document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
 
 function creerGrille(){
 
@@ -40,6 +43,7 @@ function creerGrille(){
 			document.querySelector(".compteurBleu").innerHTML = compteurBleu;
 			document.querySelector(".compteurBlanc").innerHTML = compteurBlanc;
 			document.querySelector(".compteurNoir").innerHTML = compteurNoir;
+			click();
 		})
 }
 
@@ -134,16 +138,14 @@ function lancementPartie(){
 	let equipeRouge = document.querySelector(".goneEquipeRouge")
 	let boutonTemporaire = document.querySelector(".gone");
 	let boutonPret = document.querySelector(".boutonPret");
-	let msgDebut = document.querySelector(".debut");
-	msgDebut.classList.remove("debut");
-	msgDebut.classList.add("gone");
 	boutonPret.classList.remove("boutonPret");
 	boutonPret.classList.add("gone");
 	equipeRouge.classList.remove("goneEquipeRouge");
 	equipeRouge.classList.add("equipeRouge");
 	document.querySelector("#grille").classList.add("grilleRouge");
+	document.querySelector(".preparation").classList.add("gone");
+	document.querySelector(".preparation").classList.remove("preparation");
 	rouge = true;
-	click();
 }
 
 //function deroulementTour(){
@@ -190,7 +192,12 @@ function allumerLeFeu(){
 
 const pret = async (event) => {
 	event.preventDefault();
-	
+	let msgDebut = document.querySelector(".debut");
+	let msgJoueurPret = document.querySelector(".joueurPretGone");
+	msgDebut.classList.remove("debut");
+	msgDebut.classList.add("gone");
+	msgJoueurPret.classList.add("joueurPret");
+	msgJoueurPret.classList.remove("joueurPretGone");
 	let joueurPret = {
 			ready: 1
 	}
@@ -206,6 +213,19 @@ const pret = async (event) => {
 document.querySelector('.boutonPret')
 	.addEventListener('click', pret);
 
-creerGrille();
+let eventSource = new EventSource('http://localhost:8080/codenames-war/api/plateauDeJeu/sse');
+eventSource.addEventListener('message', (event) => {
+
+	alert(event.data);
+	compteurJoueursPasPret --;
+	document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
+	if(compteurJoueursPasPret == 0){
+		let msgJoueurPret = document.querySelector(".joueurPret");
+		msgJoueurPret.classList.add("joueurPretGone");
+		msgJoueurPret.classList.remove("joueurPret");
+		creerGrille();
+		lancementPartie();
+	}
+});
 
 //allumerLeFeu();
