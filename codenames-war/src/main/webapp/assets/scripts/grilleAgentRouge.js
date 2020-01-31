@@ -248,4 +248,4 @@ eventSource.addEventListener('message', (event) => {
 });
 
 
-//allumerLeFeu();
+allumerLeFeu();
