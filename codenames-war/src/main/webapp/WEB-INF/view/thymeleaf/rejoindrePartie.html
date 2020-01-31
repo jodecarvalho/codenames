@@ -2,15 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
 <head>
-<title>Accueil</title>
-<script defer src="assets/scripts/creationPartie.js"></script>
+<title>Rejoindre Partie</title>
+<meta name="viewport" content="width=devide-width, initial-scale=1" />
+<script defer src="assets/scripts/rejoindrePartie.js"></script>
 </head>
 <body>
-	<main>
-
-		<p>Id de la partie : [[${partie.id}]]</p>
-
-		<!--  ajouter form pour choisir couleur et role -->
+		
 		<section>
 			<h1>Choisir un role et une couleur</h1>
 
@@ -25,7 +22,6 @@
 					<label for="role_2">Maitre</label>
 				</p>
 			</div>
-
 
 			<h2>Choisir une couleur</h2>
 			<div>
@@ -44,48 +40,8 @@
 			</div>
 
 		</section>
-
-
-		<table>
-			<thead>
-				<tr>
-					<th colspan="4">Joueurs</th>
-				</tr>
-				<tr>
-					<th>Pseudo</th>
-					<th>Couleur</th>
-					<th>Role</th>
-					<th>Boutton supprimer</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="j : ${joueurs}">
-					<td>
-						<p th:if="${j.personne.pseudo != null}">[[${j.personne.pseudo}]]</p>
-						<p th:if="${j.personne.pseudo == null}">Null</p>
-					</td>
-					<td>
-						<p th:if="${j.couleur != ''}">[[${j.couleur}]]</p>
-						<p th:if="${j.couleur == ''}">Null</p>
-					</td>
-					<td>
-						<p th:if="${j.role != ''}">[[${j.role}]]</p>
-						<p th:if="${j.role == ''}">Null</p>
-					</td>
-					<td>
-						<button class="btn btn-warning">Je ne peux pas me supprimer</button>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-
-
-
-		<a class="btn btn-danger" th:href="@{plateauDeJeu}" role="button">
-			Valider </a>
-	</main>
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 			crossorigin="anonymous"></script>
 		<script
@@ -96,5 +52,6 @@
 			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 			crossorigin="anonymous"></script>
+
 </body>
 </html>

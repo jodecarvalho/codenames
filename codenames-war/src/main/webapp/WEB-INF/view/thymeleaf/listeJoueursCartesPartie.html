@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layout.html :: layout(~{::title},~{::body})}">
+<head>
+<title>Liste joueurs et cartes d'une partie</title>
+</head>
+<body>
+	<a class="btn btn-danger"
+					th:href="@{home}" 
+					role="button">Home</a>
+	<table>
+		<thead>
+			<tr>
+				<th colspan="3">Cartes</th>
+			</tr>
+			<tr>
+				<th>Mots</th>
+				<th>Couleur</th>
+				<th>Decouvert</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="c : ${cartes}">
+				<td><p>[[${c.monMot.mot}]]</p></td>
+				<td><p>[[${c.couleur}]]</p></td>
+				<td>
+					<p th:if="${c.decouvert == true}">Decouvert</p>
+					<p th:if="${c.decouvert == false}">Recouvert</p>
+					<p th:if="${c.decouvert == null}">Null</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table>
+		<thead>
+			<tr>
+				<th colspan="3">Joueurs</th>
+			</tr>
+			<tr>
+				<th>Pseudo</th>
+				<th>Couleur</th>
+				<th>Role</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="j : ${joueurs}">
+				<td>
+					<p th:if="${j.personne.pseudo != null}">[[${j.personne.pseudo}]]</p>
+					<p th:if="${j.personne.pseudo == null}">Null</p>
+				</td>
+				<td><p>[[${c.couleur}]]</p></td>
+				<td>
+					<p th:if="${j.role != ""}">[[${j.role}]]</p>
+					<p th:if="${j.role == ""}">Null</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>

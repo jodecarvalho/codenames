@@ -8,33 +8,41 @@
 	<header>
 		<h1>Bonjour [[${session.personne.pseudo}]]</h1>
 	</header>
-
 	<main>
 		<h1>Main (temporaire)</h1>
-
 		<a class="btn btn-black"
 			th:href="@{creationpartie(idPersonne=${session.personne.id})}"
 			role="button"> Creer une partie</a>
-			
 		<table>
-			
+			<tbody>
+				<tr th:each="partie : ${partiesAll}">
+					<td>
+						<a type="button" class="btn btn-dark"
+						th:href="@{rejoindrePartie(idPartie=${partie.id})}" 
+						name="${partie.id}"
+						th:if="${partie.etat == 'creation'}">Partie [[${partie.id}]]</a>
+					</td>
+				</tr>
+			</tbody>
 		</table>
-
 		<aside>
 			<h1>Aside (temporaire)</h1>
 			<select name="partie" id="partie-select">
-			 	<option>Partie jouer</option>
-			 	<option>Partie en cours</option>
-			 	<option>Partie a rejoindre</option>
+				<option>Partie jouer</option>
+				<option>Partie en cours</option>
+				<option>Partie a rejoindre</option>
 			</select>
 			<table>
-				<tr th:each="partie : ${parties}">
-					<button type="button" class="btn btn-dark" name="${partie.id}">Partie [[${partie.id}]]</button>
-				</tr>
+				<tbody>
+					<tr th:each="partie : ${parties}">
+						<td><a type="button" class="btn btn-dark"
+							th:href="@{listeJoueursCartesPartie(id=${partie.id})}"
+							name="${partie.id}">Partie [[${partie.id}]]</a></td>
+						<td><p>[[${partie.etat}]]</p></td>
+					</tr>
+				</tbody>
 			</table>
 		</aside>
 	</main>
-
-
 </body>
 </html>

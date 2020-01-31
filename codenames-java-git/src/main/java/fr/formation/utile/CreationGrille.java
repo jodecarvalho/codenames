@@ -114,7 +114,7 @@ public class CreationGrille extends VariableCreationPartie{
 		int r = 9;
 		int b = 8;
 		int n = 1;
-		int t = 9;
+		int t = 7;
 
 		int i = 0;
 		while ((r + b + n + t) != 0) {
