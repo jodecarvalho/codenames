@@ -25,7 +25,10 @@ btnValider.addEventListener('click', (event) => {
 	let joueur = null;
 	
 	fetch(`http://localhost:8081/codenames-war/api/joueur/findJoueurBySession`)
-	.then(resp => joueur = resp.json());
+	.then(resp => resp.json())
+	.then(j => joueur = j)
+	.catch(err => console.log(err));
+	
 	console.log("Joueur : ");
 	console.log(joueur);
 	console.log("Couleur : ");
@@ -50,7 +53,7 @@ btnValider.addEventListener('click', (event) => {
 });
 
 //Si un autre joueur s'ajoute
-let eventSource = new EventSource(`http://localhost:8081/codenames-war/api/joueur/save`);
+let eventSource = new EventSource(`http://localhost:8081/codenames-war/api/sse`);
 evenSource.addEventListener('message', (event)=>{
 	//alert(msg);
 	//Si on a reçu un objet json

@@ -38,12 +38,12 @@ public class Carte {
 	
 	@Column(name = "POSITION_X_CARTE", nullable = false)
 //	@NotEmpty
-	@JsonView(Views.Carte.class)
+	//@JsonView(Views.Carte.class)
 	private int pos_x;
 	
 	@Column(name = "POSITION_Y_CARTE", nullable = false)
 //	@NotEmpty
-	@JsonView(Views.Carte.class)
+	//@JsonView(Views.Carte.class)
 	private int pos_y;
 	
 	@Column(name = "DECOUVERT")

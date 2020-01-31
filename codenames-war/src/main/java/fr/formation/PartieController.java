@@ -45,7 +45,7 @@ public class PartieController {
 	public String creationPartieGET(@RequestParam int idPersonne, Model model) {
 
 		try {
-			Personne personne = daoPersonne.findById(idPersonne).orElseThrow(Exception::new);
+			Personne personne = daoPersonne.findById(idPersonne).get();
 			int idPartie = menuCreationPartie.setPartie(personne);// Sauvegarde une partie avec l'id de la personne
 			creationGrille.setupGrille();
 			creationGrille.saveGrille(idPartie);// sauve la grille poru l'id de la partie
