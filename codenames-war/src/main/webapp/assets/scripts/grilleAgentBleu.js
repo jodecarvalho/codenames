@@ -1,15 +1,33 @@
-
+//Compteurs de tuiles. Ceux-ci diminueront à chaque tuile découverte correspondant à une couleur de compteur
 let compteurRouge = 0;
 let compteurBleu = 0;
 let compteurBlanc = 0;
 let compteurNoir = 0;
+//Compteur de joueurs qui ne sont pas encore prêt, à chaque fois qu'un joueur appuiera sur "Pret!", ce compteur diminuera
+//jusqu'à atteindre zéro pour permettre de lancer la partie
 let compteurJoueursPasPret = 2;
+//Booléen permettant de vérifier si la partie est commencée. Si non, les joueurs ne pourront pas
+//intéragir avec la grille
+let partieCommencee = false;
+//Booléen permettant de différencier les tours rouges des tours bleus. Il changera de valeur à chaque fin de tour
 let rouge = false;
 
 document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
+creerGrille();
 
 function creerGrille(){
-
+	
+	if (partieCommencee == true){
+		document.querySelectorAll(".carte")
+		.forEach((tuile) => {
+			tuile.remove();
+		});
+		compteurRouge = 0;
+		compteurBleu = 0;
+		compteurBlanc = 0;
+		compteurNoir = 0;
+	}
+	
 	fetch('http://localhost:8080/codenames-war/api/carte/1')
 		.then(resp => resp.json())
 		.then(cartes => {
@@ -19,30 +37,39 @@ function creerGrille(){
 				let carte = document.createElement('div');
 				texte.classList.add("texte");
 				mot.classList.add("mot");
-				carte.classList.add("carte");
-				carte.setAttribute('data-couleur', c.couleur);
-				mot.append(texte);
-				carte.append(mot);
+				carte.setAttribute('decouvert', c.decouvert);
+				if(c.decouvert == false){
+					carte.classList.add("carte");
+					carte.setAttribute('data-couleur', c.couleur);
+					mot.append(texte);
+					carte.append(mot);
+					if (c.couleur == "Rouge"){
+						compteurRouge ++;
+					}
+					if (c.couleur == "Bleu"){
+						compteurBleu ++;
+					}
+					if (c.couleur == "Blanc"){
+						compteurBlanc ++;
+					}
+					if (c.couleur == "Noir"){
+						compteurNoir ++;
+					}
+				}
+				else{
+					carte.classList.add(c.couleur);
+				}
 				document.querySelector("#grille").append(carte);
-				document.querySelector("#grille").classList.add("grilleGrise");
+				if(partieCommencee == false){
+					document.querySelector("#grille").classList.add("grilleGrise");
+				}
 				texte.innerHTML = c.monMot.mot;
-				if (c.couleur == "Rouge"){
-					compteurRouge ++;
-				}
-				if (c.couleur == "Bleu"){
-					compteurBleu ++;
-				}
-				if (c.couleur == "Blanc"){
-					compteurBlanc ++;
-				}
-				if (c.couleur == "Noir"){
-					compteurNoir ++;
-				}
 			}
 			document.querySelector(".compteurRouge").innerHTML = compteurRouge;
 			document.querySelector(".compteurBleu").innerHTML = compteurBleu;
 			document.querySelector(".compteurBlanc").innerHTML = compteurBlanc;
 			document.querySelector(".compteurNoir").innerHTML = compteurNoir;
+			click();
 		})
 }
 
@@ -53,50 +80,44 @@ function click(){
 	//lorsque l'on clique sur une carte, la couleur est révélée et cache l'entièreté de la case
 	monClick.forEach((lien) =>{
 		lien.addEventListener('click', function(event) {
-			if(rouge == false){
-				if(event.target.classList == "carte"){
-					let texte = event.target.querySelector(".texte");
-					texte.classList.remove("texte");
-					texte.classList.add("gone");
-					let mot = event.target.querySelector(".mot");
-					mot.classList.remove("mot");
-					mot.classList.add("gone");
-					event.target.classList.remove("carte");
-					if(event.target.getAttribute("data-couleur") == "Blanc"){
-						finDuTour();
-						alert("Vous êtes tombés sur un témoin, c'est au tour de l'équipe adverse");
-						event.target.classList.add("blanche");
-						compteurBlanc --;
-						document.querySelector(".compteurBlanc").innerHTML = compteurBlanc;
-						
-					}
-					if(event.target.getAttribute("data-couleur") == "Rouge"){
-						//Cette boucle if permet de vérifier si l'équipe tombée sur la case est bleue,
-						//si c'est le cas, le tour est fini
-						//On retrouve la même boucle pour le cas de la case bleue sélectionnée par l'équipe rouge
-						if(rouge == false){
+			if(partieCommencee == true){
+				if(rouge == false){
+					if(event.target.classList == "carte"){
+						let texte = event.target.querySelector(".texte");
+						texte.classList.remove("texte");
+						texte.classList.add("gone");
+						let mot = event.target.querySelector(".mot");
+						mot.classList.remove("mot");
+						mot.classList.add("gone");
+						event.target.classList.remove("carte");
+						if(event.target.getAttribute("data-couleur") == "Blanc"){
 							finDuTour();
-							alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+							alert("Vous êtes tombés sur un témoin, c'est au tour de l'équipe adverse");
+							event.target.classList.add("Blanc");
+							
 						}
-						event.target.classList.add("rouge");
-						compteurRouge --;
-						document.querySelector(".compteurRouge").innerHTML = compteurRouge;
-					}
-					if(event.target.getAttribute("data-couleur") == "Bleu"){
-						if(rouge == true){
+						if(event.target.getAttribute("data-couleur") == "Rouge"){
+							//Cette boucle if permet de vérifier si l'équipe tombée sur la case est bleue,
+							//si c'est le cas, le tour est fini
+							//On retrouve la même boucle pour le cas de la case bleue sélectionnée par l'équipe rouge
+							if(rouge == false){
+								finDuTour();
+								alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+							}
+							event.target.classList.add("Rouge");
+						}
+						if(event.target.getAttribute("data-couleur") == "Bleu"){
+							if(rouge == true){
+								finDuTour();
+								alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+							}
+							event.target.classList.add("Bleu");
+						}
+						if(event.target.getAttribute("data-couleur") == "Noir"){
 							finDuTour();
-							alert("Vous êtes tombés sur une tuile de l'équipe adverse, fin du tour");
+							alert("Salut mon pote, c'est Game Over");
+							event.target.classList.add("Noir");
 						}
-						event.target.classList.add("bleue");
-						compteurBleu --;
-						document.querySelector(".compteurBleu").innerHTML = compteurBleu;
-					}
-					if(event.target.getAttribute("data-couleur") == "Noir"){
-						finDuTour();
-						alert("Salut mon pote, c'est Game Over");
-						event.target.classList.add("noire");
-						compteurNoir --;
-						document.querySelector(".compteurNoir").innerHTML = compteurNoir;
 					}
 				}
 			}
@@ -104,34 +125,34 @@ function click(){
 	});
 }
 //la fonction qui simule une liste de 25 cartes avec leurs libelle et couleur
-function creerListeCartes(){
-	let listeCartes = [];
-	for(let i = 1; i < 26; i++){
-		compteur = Math.floor(Math.random()*4);
-		if(compteur == 0){
-			couleur = "blanche";
-			compteurBlanc ++;
-		}
-		if(compteur == 1){
-			couleur = "rouge";
-			compteurRouge ++
-		}
-		if(compteur == 2){
-			couleur = "bleue";
-			compteurBleu ++
-		}
-		if(compteur == 3){
-			couleur = "noire";
-			compteurNoir ++
-		}
-		let carte = {
-				libelle : i,
-				couleurCarte: couleur
-		}
-		listeCartes.push(carte);
-	}
-	return listeCartes;
-}
+//function creerListeCartes(){
+//	let listeCartes = [];
+//	for(let i = 1; i < 26; i++){
+//		compteur = Math.floor(Math.random()*4);
+//		if(compteur == 0){
+//			couleur = "blanche";
+//			compteurBlanc ++;
+//		}
+//		if(compteur == 1){
+//			couleur = "rouge";
+//			compteurRouge ++
+//		}
+//		if(compteur == 2){
+//			couleur = "bleue";
+//			compteurBleu ++
+//		}
+//		if(compteur == 3){
+//			couleur = "noire";
+//			compteurNoir ++
+//		}
+//		let carte = {
+//				libelle : i,
+//				couleurCarte: couleur
+//		}
+//		listeCartes.push(carte);
+//	}
+//	return listeCartes;
+//}
 
 function lancementPartie(){
 	let equipeRouge = document.querySelector(".goneEquipeRouge")
@@ -142,8 +163,6 @@ function lancementPartie(){
 	equipeRouge.classList.remove("goneEquipeRouge");
 	equipeRouge.classList.add("equipeRouge");
 	document.querySelector("#grille").classList.add("grilleRouge");
-	document.querySelector(".preparation").classList.add("gone");
-	document.querySelector(".preparation").classList.remove("preparation");
 	rouge = true;
 	click();
 }
@@ -216,10 +235,10 @@ document.querySelector('.boutonPret')
 let eventSource = new EventSource('http://localhost:8080/codenames-war/api/plateauDeJeu/sse');
 eventSource.addEventListener('message', (event) => {
 
-	alert(event.data);
 	compteurJoueursPasPret --;
 	document.querySelector(".compteurJoueursPasPret").innerHTML = compteurJoueursPasPret;
 	if(compteurJoueursPasPret == 0){
+		partieCommencee = true;
 		let msgJoueurPret = document.querySelector(".joueurPret");
 		msgJoueurPret.classList.add("joueurPretGone");
 		msgJoueurPret.classList.remove("joueurPret");
